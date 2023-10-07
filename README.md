@@ -10,7 +10,7 @@
    - [Sense Amplifier](SenseAmp)
    - [Data driver](datadriver)
 
-### Introduction
+## Introduction
 
-### Design Description
+## Design Description(#Description)
 the complete SRAM design contains a 6-transistor (6T) SRAM cell, a pre-charge circuit, a row decoder, control logic, a sense amplifier and a data driver. This section will discuss the design of the blocks and their simulation results.
