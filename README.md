@@ -9,6 +9,7 @@
    - [Row Decoder](Row-Decoder)
    - [Sense Amplifier](SenseAmp)
    - [Data driver](datadriver)
+- [Operation](Operation)
 - [Static Noise Margin](SNM)
 
 ## Introduction
