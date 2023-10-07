@@ -3,5 +3,9 @@
 ## Table of Contents
 - [Introduction](Introduction)
 - [Flowchart](Flowchart)
-- [Description](Description)
+- [Design Description](Description)
+   - [A. 6-Transistor (6T) CMOS SRAM Cell](sramcell)
+   - [Precharge Circuit](PCckt)
+   - [Sense Amplifier](SenseAmp)
+   - [Data driver](datadriver)
 
