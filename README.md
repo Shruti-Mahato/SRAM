@@ -11,14 +11,14 @@ Design of a 6T full CMOS SRAM (16-byte) using 0.18um CMOS technology for low pow
 - [Design Description](#design-description)
    - [6-Transistor (6T) CMOS SRAM Cell](#6\-transistor-(6t)-cmos-sram-cell)
    - [Precharge Circuit](#precharge-circuit)
-   - [Row Decoder](#row-decoder)
+   - [Row Decoder](##row-decoder)
    - [Sense Amplifier](#sense-amplifier)
    - [Data driver](#data-driver)
 - [Working of SRAM](#working-of-sram)
 - [Static Noise Margin](#static-noise-margin)
 
 ## Introduction
-
+##Flowchart
 ## Design Description
 the complete SRAM design contains a 6-transistor (6T) SRAM cell, a pre-charge circuit, a row decoder, control logic, a sense amplifier and a data driver. This section will discuss the design of the blocks and their simulation results.
 
