@@ -4,11 +4,11 @@
 - [Introduction](Introduction)
 - [Flowchart](Flowchart)
 - [Design Description](#Description)
-   - [6-Transistor (6T) CMOS SRAM Cell](sramcell)
-   - [Precharge Circuit](PCckt)
-   - [Row Decoder](Row-Decoder)
-   - [Sense Amplifier](SenseAmp)
-   - [Data driver](datadriver)
+   - [1. 6-Transistor (6T) CMOS SRAM Cell](sramcell)
+   - [2. Precharge Circuit](PCckt)
+   - [3. Row Decoder](Row-Decoder)
+   - [4. Sense Amplifier](SenseAmp)
+   - [5. Data driver](datadriver)
 - [Static Noise Margin](SNM)
 
 ## Introduction
