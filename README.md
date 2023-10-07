@@ -6,16 +6,16 @@ Design of a 6T full CMOS SRAM (16-byte) using 0.18um CMOS technology for low pow
 - The data storage cell, i.e., the 1-bit memory cell in static RAM arrays, invariably consists of a simple latch circuit with two stable operating points (states). Depending on the preserved state of the two-inverter latch circuit, the data being held in the memory cel will be interpreted either as a logic "0" or as a logic " 1." To access (read and write) the data contained in the memory cell via the bit line, we need at least one switch, which is controlled by the corresponding word line, i.e., the row address selection signal. Usually, two complementary access switches consisting of nMOS pass transistors are implemented to connect the 1-bit SRAM cell to the complementary bitlines (columns). This can be likened to turning the car steering wheel with both left and right hands in complementary directions.
 
 ## Table of Contents
-- [Introduction](Introduction)
-- [Flowchart](Flowchart)
-- [Design Description](#Description)
-   - [6-Transistor (6T) CMOS SRAM Cell](sramcell)
-   - [Precharge Circuit](PCckt)
-   - [Row Decoder](Row-Decoder)
-   - [Sense Amplifier](SenseAmp)
-   - [Data driver](datadriver)
+- [Introduction](#introduction)
+- [Flowchart](#flowchart)
+- [Design Description](#design-description)
+   - [6-Transistor (6T) CMOS SRAM Cell](#6\-transistor-(6t)-cmos-sram-cell)
+   - [Precharge Circuit](#precharge-circuit)
+   - [Row Decoder](#row-decoder)
+   - [Sense Amplifier](#sense-amplifier)
+   - [Data driver](#data-driver)
 - [Working of SRAM](#working-of-sram)
-- [Static Noise Margin](SNM)
+- [Static Noise Margin](#static-noise-margin)
 
 ## Introduction
 
