@@ -9,7 +9,7 @@ Design of a 6T full CMOS SRAM (16-byte) using 0.18um CMOS technology for low pow
 - [Introduction](#introduction)
 - [Flowchart](#flowchart)
 - [Design Description](#design-description)
-   - [6-Transistor (6T) CMOS SRAM Cell](#6\-transistor-(6t)-cmos-sram-cell)
+   - [6-Transistor (6T) CMOS SRAM Cell](#6-transistor-6t-cmos-sram-cell)
    - [Precharge Circuit](#precharge-circuit)
    - [Row Decoder](##row-decoder)
    - [Sense Amplifier](#sense-amplifier)
@@ -18,7 +18,7 @@ Design of a 6T full CMOS SRAM (16-byte) using 0.18um CMOS technology for low pow
 - [Static Noise Margin](#static-noise-margin)
 
 ## Introduction
-##Flowchart
+## Flowchart
 ## Design Description
 the complete SRAM design contains a 6-transistor (6T) SRAM cell, a pre-charge circuit, a row decoder, control logic, a sense amplifier and a data driver. This section will discuss the design of the blocks and their simulation results.
 
@@ -35,3 +35,4 @@ shows a pass-transistor logic based 4:16 row decoder to select any row from the 
 The sense amplifier is used to sense the voltage difference between the bitlines and amplify it to drive the digital circuits. There are different types of sense amplifiers are present [5,6] and used in the SRAM design depending upon the application which is typically a trade-off between area and power. In this work, an analog differential amplifier-based sense amplifier is implemented. Fig. 9 shows the differential amplifier-based sense amplifier. As shown in the figure, during the read operation a small voltage difference between the bitlines ‘bl’ and ‘blb’ is amplified by the sense amplifier and the buffer converts the output to rail-to-rail CMOS voltage. The gain of the amplifier and the threshold of the buffer is designed in tandem to achieve that function.
 
 ## Working of SRAM
+## Static Noise Margin
