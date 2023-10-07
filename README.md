@@ -2,5 +2,6 @@
 
 ## Table of Contents
 - [Introduction](Introduction)
-- [6T SRAM](SRAM)
-- [Operation](Operation)
+- [Flowchart](Flowchart)
+- [Description](Description)
+
