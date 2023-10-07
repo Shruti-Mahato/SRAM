@@ -14,7 +14,7 @@ Design of a 6T full CMOS SRAM (16-byte) using 0.18um CMOS technology for low pow
    - [Row Decoder](Row-Decoder)
    - [Sense Amplifier](SenseAmp)
    - [Data driver](datadriver)
-- [Working of SRAM](working-of-sram)
+- [Working of SRAM](#working-of-sram)
 - [Static Noise Margin](SNM)
 
 ## Introduction
