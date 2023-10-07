@@ -4,7 +4,7 @@
 - [Introduction](Introduction)
 - [Flowchart](Flowchart)
 - [Design Description](Description)
-   - [A. 6-Transistor (6T) CMOS SRAM Cell](sramcell)
+   - [6-Transistor (6T) CMOS SRAM Cell](sramcell)
    - [Precharge Circuit](PCckt)
    - [Sense Amplifier](SenseAmp)
    - [Data driver](datadriver)
