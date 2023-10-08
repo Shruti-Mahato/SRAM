@@ -1,9 +1,10 @@
-# Project Overview
-Design of a 6T full CMOS SRAM (16-byte) using 0.18um CMOS technology for low power IoT application.
+# Title
+Design and Implementation of a 16-Byte SRAM in 0.18μm CMOS Technology for low power IoT application.
 
 # What is SRAM ?
-- SRAM, which stands for Static Random-Access Memory, is a type of computer memory that is used for storing data that needs to be accessed quickly and frequently by a computer's central processing unit (CPU).  SRAM is one of the two primary types of volatile memory used in computers, with the other being DRAM (Dynamic Random-Access Memory) which must be periodically refreshed.
-- Each SRAM cell consists of two cross-coupled inverters (also known as a bistable circuit) and additional access transistors for read and write operations. These inverters form a latch, which can hold data in a stable state without the need for periodic refreshing (unlike DRAM).
+- SRAM, which stands for Static Random-Access Memory, is a type of computer memory that is used for storing data that needs to be accessed quickly and frequently by a computer's central processing unit (CPU).  SRAM is one of the two primary types of volatile memory used in computers, with the other being DRAM (Dynamic Random-Access Memory).
+- One of the key characteristics of SRAM is its stability. Once data is written into an SRAM cell, it remains there until it's explicitly overwritten. This is in contrast to DRAM, which requires periodic refreshing to maintain data integrity.
+- SRAM is very fast because it doesn't require the charge/discharge cycle that DRAM needs. Data can be read or written to SRAM cells with minimal delay, making it suitable for use as cache memory in CPUs.
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -18,7 +19,19 @@ Design of a 6T full CMOS SRAM (16-byte) using 0.18um CMOS technology for low pow
 - [Static Noise Margin](#static-noise-margin)
 
 ## Introduction
+The primary objective of this project is to design a 16-byte SRAM with optimal performance and minimal power consumption in a 0.18μm CMOS process.
+- Cell Design: Design of SRAM memory cells that offer fast access times and ensuring high-speed data retrieval while minimizing power consumption.
+- Wordline and Bitline Design: Design of wordline and bitline circuit that facilitate fast data read and write operations, minimizing access time and maximizing data throughput.
+- Sense Amplifier: Implementation of differential based sense amplifiers for accurate data sensing and amplification.
 
+### Tools used :
+The design process will involve extensive use of Electronic Design Automation (EDA) tools for schematic, simulation, and layout design.
+- Schematic - Cadence Virtuoso Schematic Editor
+- Simulation - Cadence Spectre Simulator[https://en.wikipedia.org/wiki/Spectre_Circuit_Simulator]
+- Layout - Cadence Virtuoso Layout Suite
+
+- Each SRAM cell consists of two cross-coupled inverters (also known as a bistable circuit) and additional access transistors for read and write operations. These inverters form a latch, which can hold data in a stable state without the need for periodic refreshing (unlike DRAM).
+- SRAM cells are organized into rows and columns. Each row has a wordline that controls access to the cells in that row, and each column has a pair of bitlines that connect to the SRAM cells
 ## Flowchart
 ## Design Description
 the complete SRAM design contains a 6-transistor (6T) SRAM cell, a pre-charge circuit, a row decoder, control logic, a sense amplifier and a data driver. This section will discuss the design of the blocks and their simulation results.
