@@ -27,9 +27,11 @@ The primary objective of this project is to design a 16-byte SRAM with optimal p
 
 ## Tools used :
 The design process will involve extensive use of Electronic Design Automation (EDA) tools for schematic, simulation, and layout design.
+```plaintext
 - Schematic - Cadence Virtuoso Schematic Editor
 - Simulation - [Cadence Spectre Simulator](https://en.wikipedia.org/wiki/Spectre_Circuit_Simulator)
 - Layout - Cadence Virtuoso Layout Suite
+```
 
 ## Flowchart
 ## Design Description
