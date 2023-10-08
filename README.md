@@ -39,6 +39,8 @@ the complete SRAM design contains a 6-transistor (6T) SRAM cell, a pre-charge ci
 
 ### 1. 6-Transistor (6T) CMOS SRAM Cell
 - Each SRAM cell consists of two cross-coupled inverters (also known as a bistable circuit) and additional access transistors for read and write operations. These inverters form a latch, which can hold data in a stable state without the need for periodic refreshing (unlike DRAM).
+- ![Untitled Diagram drawio](https://github.com/Shruti-Mahato/SRAM/assets/119694274/1c1d0b80-4e37-4df0-9409-fa9d4d86feb6)
+
 The core of the SRAM is a memory cell that stores one bit of information. Each cell’s area and power are critical since it decides the area and power of the entire chip. This design uses a standard 6T SRAM cell. In short, it is a back-to-back inverter (M1, M2, M5, M6) to store data indefinitely if power is provided to the cell. The access transistors (M3, M4) are used to read and write data into the cell. The sizing of the devices is decided by three main factors: the area of the cell, stored data in the memory cells is not corrupted while reading it, and able to overwrite the stored data during write operation. Analysis with the appropriate large-signal equations (saturation/linear) [1], it can be shown that M3 needs to be stronger than M5 and, M1 needs to be stronger than M3. Since the structure is symmetric, the same constraints apply for M6, M4, M2. Since these constraints are unbounded, additional constraints are needed to choose the size of transistors in the 6T cell which is typically a trade-off between area and speed. In this design, the 6T transistors were sized for minimum area.
 
 ### 2. Precharge Circuit
