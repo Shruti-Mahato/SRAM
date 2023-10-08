@@ -1,9 +1,9 @@
-# SRAM 
+# Project Overview
 Design of a 6T full CMOS SRAM (16-byte) using 0.18um CMOS technology for low power IoT application.
 
 # What is SRAM ?
-- Static random-access memory is a type of random-access memory that uses latching circuitry to store each bit. SRAM is volatile memory, data is lost when power is removed. The term static differentiates SRAM from DRAM which must be periodically refreshed.
-- The data storage cell, i.e., the 1-bit memory cell in static RAM arrays, invariably consists of a simple latch circuit with two stable operating points (states). Depending on the preserved state of the two-inverter latch circuit, the data being held in the memory cel will be interpreted either as a logic "0" or as a logic " 1." To access (read and write) the data contained in the memory cell via the bit line, we need at least one switch, which is controlled by the corresponding word line, i.e., the row address selection signal. Usually, two complementary access switches consisting of nMOS pass transistors are implemented to connect the 1-bit SRAM cell to the complementary bitlines (columns). This can be likened to turning the car steering wheel with both left and right hands in complementary directions.
+- SRAM, which stands for Static Random-Access Memory, is a type of computer memory that is used for storing data that needs to be accessed quickly and frequently by a computer's central processing unit (CPU).  SRAM is one of the two primary types of volatile memory used in computers, with the other being DRAM (Dynamic Random-Access Memory) which must be periodically refreshed.
+- Each SRAM cell consists of two cross-coupled inverters (also known as a bistable circuit) and additional access transistors for read and write operations. These inverters form a latch, which can hold data in a stable state without the need for periodic refreshing (unlike DRAM).
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -18,6 +18,7 @@ Design of a 6T full CMOS SRAM (16-byte) using 0.18um CMOS technology for low pow
 - [Static Noise Margin](#static-noise-margin)
 
 ## Introduction
+
 ## Flowchart
 ## Design Description
 the complete SRAM design contains a 6-transistor (6T) SRAM cell, a pre-charge circuit, a row decoder, control logic, a sense amplifier and a data driver. This section will discuss the design of the blocks and their simulation results.
