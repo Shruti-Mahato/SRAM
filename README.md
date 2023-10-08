@@ -8,6 +8,7 @@ Design and Implementation of a 16-Byte SRAM in 0.18μm CMOS Technology for low p
 
 ## Table of Contents
 - [Introduction](#introduction)
+- [Tools used](#tools-used)
 - [Flowchart](#flowchart)
 - [Design Description](#design-description)
    - [6-Transistor (6T) CMOS SRAM Cell](#6-transistor-6t-cmos-sram-cell)
@@ -24,19 +25,19 @@ The primary objective of this project is to design a 16-byte SRAM with optimal p
 - Wordline and Bitline Design: Design of wordline and bitline circuit that facilitate fast data read and write operations, minimizing access time and maximizing data throughput.
 - Sense Amplifier: Implementation of differential based sense amplifiers for accurate data sensing and amplification.
 
-### Tools used :
+## Tools used :
 The design process will involve extensive use of Electronic Design Automation (EDA) tools for schematic, simulation, and layout design.
 - Schematic - Cadence Virtuoso Schematic Editor
 - Simulation - [Cadence Spectre Simulator](https://en.wikipedia.org/wiki/Spectre_Circuit_Simulator)
 - Layout - Cadence Virtuoso Layout Suite
 
-- Each SRAM cell consists of two cross-coupled inverters (also known as a bistable circuit) and additional access transistors for read and write operations. These inverters form a latch, which can hold data in a stable state without the need for periodic refreshing (unlike DRAM).
-- SRAM cells are organized into rows and columns. Each row has a wordline that controls access to the cells in that row, and each column has a pair of bitlines that connect to the SRAM cells
 ## Flowchart
 ## Design Description
 the complete SRAM design contains a 6-transistor (6T) SRAM cell, a pre-charge circuit, a row decoder, control logic, a sense amplifier and a data driver. This section will discuss the design of the blocks and their simulation results.
 
 ### 1. 6-Transistor (6T) CMOS SRAM Cell
+- Each SRAM cell consists of two cross-coupled inverters (also known as a bistable circuit) and additional access transistors for read and write operations. These inverters form a latch, which can hold data in a stable state without the need for periodic refreshing (unlike DRAM).
+- SRAM cells are organized into rows and columns. Each row has a wordline that controls access to the cells in that row, and each column has a pair of bitlines that connect to the SRAM cells
 The core of the SRAM is a memory cell that stores one bit of information. Each cell’s area and power are critical since it decides the area and power of the entire chip. This design uses a standard 6T SRAM cell [1][2]. In principle, it is a back-to-back inverter (M1, M2, M5, M6) to store data indefinitely if power is provided to the cell. The access transistors (M3, M4) are used to read and write data into the cell. The sizing of the devices is decided by three main factors: the area of the cell, stored data in the memory cells is not corrupted while reading it, and able to overwrite the stored data during write operation. Analysis with the appropriate large-signal equations (saturation/linear) [1], it can be shown that M3 needs to be stronger than M5 and, M1 needs to be stronger than M3. Since the structure is symmetric, the same constraints apply for M6, M4, M2. Since these constraints are unbounded, additional constraints are needed to choose the size of transistors in the 6T cell which is typically a trade-off between area and speed. In this design, the 6T transistors were sized for minimum area.
 
 ### 2. Precharge Circuit
