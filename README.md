@@ -40,7 +40,7 @@ the complete SRAM design contains a 6-transistor (6T) SRAM cell, a pre-charge ci
 ### 1. 6-Transistor (6T) CMOS SRAM Cell
 - Each SRAM cell consists of two cross-coupled inverters (also known as a bistable circuit) and additional access transistors for read and write operations. These inverters form a latch, which can hold data in a stable state without the need for periodic refreshing (unlike DRAM).
   
-- ![Untitled Diagram drawio](https://github.com/Shruti-Mahato/SRAM/assets/119694274/1c1d0b80-4e37-4df0-9409-fa9d4d86feb6)
+![Untitled Diagram drawio](https://github.com/Shruti-Mahato/SRAM/assets/119694274/1c1d0b80-4e37-4df0-9409-fa9d4d86feb6)
 
 It is a back-to-back inverter (M1, M2, M5, M6) to store data indefinitely if power is provided to the cell. The access transistors (M3, M4) are used to read and write data into the cell. 
 
@@ -56,6 +56,7 @@ The sizing of the devices is decided by three main factors: the area of the cell
 
 ### 2. Precharge Circuit
 Since the output bitlines BL and BLB) of each 6T cell are shared by all the cells in a particular column, the parasitic capacitance on those nodes is very large making it impractical for the 6T cells to drive the bitlines to full CMOS voltage levels. Instead, both the bitlines are pre-charged to the same voltage, and a differential amplifier is used to sense the difference between the bitlines to read it. The nodes are also pre-charged before a write operation to reset a previous operation. Since the sensing mechanism is a differential operation, it is critical for both the bitlines to be equal in voltage for which one PMOS transistor can be used as equalizer which will maintain the same voltage level at both the sides.
+
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/b0737330-9c05-4a0f-a91b-e0ccba316665)
 
 
@@ -64,15 +65,18 @@ Here we are using a nand based 4:16 decoder to select any row from the sixteen r
 
 ### 4. Sense Amplifier
 The sense amplifier is used to sense the voltage difference between the bitlines and amplify it to drive the digital circuits. There are different types of sense amplifiers are present [5,6] and used in the SRAM design depending upon the application which is typically a trade-off between area and power. In this work, an analog differential amplifier-based sense amplifier is implemented. Fig. 9 shows the differential amplifier-based sense amplifier. As shown in the figure, during the read operation a small voltage difference between the bitlines ‘bl’ and ‘blb’ is amplified by the sense amplifier and the buffer converts the output to rail-to-rail CMOS voltage. The gain of the amplifier and the threshold of the buffer is designed in tandem to achieve that function.
+
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/6be025d7-537e-4827-bca1-50286bf77a9d)
 
 
 ## Working of SRAM
 ### Read Operation
 Let's assume initially the 6T cell is containing 0.Then the effective circuit topology will be like as the image shown below (considering the bit lines are precharged to Vdd) :When M3 and M4 turned on then Vc will discharge thus varying V1 and now the change is voltage of bit line will be sensed by sense amplifier and will be interpreted as 0.
+
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/6a55f4d8-7231-4385-8b88-f0f622d4fbd9)
 ### Write Operation
 Now let's consider initially the circuit was containing 1 and we want to modify the content to 0.Now for the cell containing 1 effective circuit will be like :Now to write 0 into it we forced the bit line to 0 by writing circuitory.But to modify the content V1 should be =0 As we designed circuit such in a way V2 can't go above Vtn so we have to force V1 > Vtn so that M2 will turn off.
+
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/6b8614f6-0f81-402c-89f4-88fb1ee535ea)
 
 
