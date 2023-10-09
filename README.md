@@ -61,7 +61,7 @@ Since the output bitlines BL and BLB) of each 6T cell are shared by all the cell
 ### 3. Row Decoder
 Here we are using a nand based 4:16 decoder to select any row from the sixteen rows in the SRAM array based on the input address bit configurations. The 4-bit address signals a[3:0] are used to activate the transistors in such a way that, any one of the outputs will be high. For example, if all the address bits are low (0000), then wl[0] output will be high and this will select the 0th row in the SRAM array. Similarly, if all the address bits are high (1111), wl[15] output line will be high and that will select the 15th row of the SRAM array.
 
-![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/e49c62e5-3121-4b83-bacc-a4b81ba8d390)
+![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/17a8aee3-2461-472b-b8b4-30f05ff51cab)
 
 ### 4. Sense Amplifier
 The sense amplifier is used to sense the voltage difference between the bitlines and amplify it to drive the digital circuits. There are different types of sense amplifiers are present and used in the SRAM design depending upon the application. In this project, an differential amplifier-based sense amplifier is implemented. below figure shows the differential amplifier-based sense amplifier. As shown in the figure, during the read operation a small voltage difference between the bitlines ‘BL’ and ‘BLB’ is amplified by the sense amplifier and the buffer converts the output to rail-to-rail CMOS voltage. The gain of the amplifier and the threshold of the buffer is designed very carefully to achieve that function.
