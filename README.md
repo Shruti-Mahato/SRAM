@@ -13,7 +13,7 @@ Design and Implementation of a 16-Byte SRAM in 0.18μm CMOS Technology for low p
 - [Design Description](#design-description)
    - [6-Transistor (6T) CMOS SRAM Cell](#6-transistor-6t-cmos-sram-cell)
    - [Precharge Circuit](#precharge-circuit)
-   - [Row Decoder](##row-decoder)
+   - [Row Decoder](#row-decoder)
    - [Sense Amplifier](#sense-amplifier)
    - [Data driver](#data-driver)
 - [Working of SRAM](#working-of-sram)
@@ -25,7 +25,7 @@ The primary objective of this project is to design a 16-byte SRAM with optimal p
 - Wordline and Bitline Design: Design of wordline and bitline circuit that facilitate fast data read and write operations, minimizing access time and maximizing data throughput.
 - Sense Amplifier: Implementation of differential based sense amplifiers for accurate data sensing and amplification.
 
-## Tools used :
+## Tools used
 The design process will involve extensive use of Electronic Design Automation (EDA) tools for schematic, simulation, and layout design.
 
 - Schematic - [Cadence Virtuoso Schematic Editor](https://cadence.com/en_US/home/tools/custom-ic-analog-rf-design/circuit-design/virtuoso-schematic-editor.html)
@@ -82,4 +82,4 @@ Now let's consider initially the circuit was containing 1 and we want to modify 
 
 ## Static Noise Margin
 
-[image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/aae0afa4-d3cc-492f-8e93-a8d446a000c4)
+![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/aae0afa4-d3cc-492f-8e93-a8d446a000c4)
