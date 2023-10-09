@@ -88,7 +88,7 @@ By Calculating we can get the the (W/L) ratio of the access transistor M3 and th
 ### Write Operation
 Now let's consider initially the circuit was containing 1 and we want to modify the content to 0.Now for the cell containing 1 effective circuit will be like :Now to write 0 into it we forced the bit line to 0 by writing circuitory.But to modify the content V1 should be =0 As we designed circuit such in a way V2 can't go above Vtn so we have to force V1 > Vtn so that M2 will turn off.
 mnb 
-![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/3c57c9d8-b10b-4d52-982f-d0d91410487b)
+![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/bb7c4e52-8f90-4798-b414-b3986ec5964a)
 
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/6b8614f6-0f81-402c-89f4-88fb1ee535ea)
 
