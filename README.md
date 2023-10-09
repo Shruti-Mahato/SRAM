@@ -82,3 +82,4 @@ Now let's consider initially the circuit was containing 1 and we want to modify 
 
 ## Static Noise Margin
 
+[image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/aae0afa4-d3cc-492f-8e93-a8d446a000c4)
