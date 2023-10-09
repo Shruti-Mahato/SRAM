@@ -44,13 +44,6 @@ the complete SRAM design contains a 6-transistor (6T) SRAM cell, a pre-charge ci
 
 It is a back-to-back inverter (M1, M2, M5, M6) to store data indefinitely if power is provided to the cell. The access transistors (M3, M4) are used to read and write data into the cell. 
 
-### Sizing of 6T 
-The core of the SRAM is a memory cell that stores one bit of information. Each cell’s area and power are critical since it decides the area of the entire chip.
-The sizing of the devices is decided by three main factors: the area of the cell, stored data in the memory cells is not corrupted while reading it, and able to overwrite the stored data during write operation.  It can be shown that M3 needs to be stronger than M5 and, M1 needs to be stronger than M3. Since the structure is symmetric, the same constraints apply for M6, M4, M2. In this design, the 6T transistors were sized for minimum area.
-
-![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/3f3ae30e-bef8-4b5d-b6c0-89d42ace8c56)
-
-![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/43ff07f8-0666-4d60-9831-883eddacf785)
 
 
 
@@ -71,11 +64,31 @@ The sense amplifier is used to sense the voltage difference between the bitlines
 
 ## Working of SRAM
 ### Read Operation
-Let's assume initially the 6T cell is containing 0.Then the effective circuit topology will be like as the image shown below (considering the bit lines are precharged to Vdd) :When M3 and M4 turned on then Vc will discharge thus varying V1 and now the change is voltage of bit line will be sensed by sense amplifier and will be interpreted as 0.
+- Let's assume initially the 6T cell is containing 0. Then the effective circuit will be like as the image shown below (considering the bit lines are precharged to Vdd). Here, M2 and M5 are turned off. The internal node voltages are V1 = 0 and V2 = vdd before the access transistors M3 and M4 are turned on.
+  
+![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/48cde1ca-b8b2-4220-a576-8181e203b4c1)
+
+- When M3 and M4 turned on by the row selection circuitry, the voltage level of column C will not show any significant variation since no current will flow through M4. On the other half of the cell, however, M3 and M1 will con-duct a nonzero current and the voltage level of column C will begin to drop slightly. While M1 and M3 are slowly discharging the column capacitance, the node voltage V₁ will increase from its initial value of 0 V.
+-  When M3 and M4 turned on then Vc will discharge thus varying V1 and now the change in voltage of BL will be sensed by sense amplifier and will be interpreted as 0.
 
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/6a55f4d8-7231-4385-8b88-f0f622d4fbd9)
+
+### Sizing of 6T 
+The core of the SRAM is a memory cell that stores one bit of information. Each cell’s area and power are critical since it decides the area of the entire chip.
+The sizing of the devices is decided by three main factors: the area of the cell, stored data in the memory cells is not corrupted while reading it, and able to overwrite the stored data during write operation.  It can be shown that M3 needs to be stronger than M5 and, M1 needs to be stronger than M3. Since the structure is symmetric, the same constraints apply for M6, M4, M2. In this design, the 6T transistors were sized for minimum area.
+
+![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/3f3ae30e-bef8-4b5d-b6c0-89d42ace8c56)
+
+![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/43ff07f8-0666-4d60-9831-883eddacf785)
+
+
+We can assume that after the access transistors are turned on, the column voltage Vc remains approximately equal to VDD. Hence, M3 operates in saturation while M1 operates in the linear region.
+
+By Calculating we can get the the (W/L) ratio of the access transistor M3 and the (W/L) ratio of M1.
 ### Write Operation
 Now let's consider initially the circuit was containing 1 and we want to modify the content to 0.Now for the cell containing 1 effective circuit will be like :Now to write 0 into it we forced the bit line to 0 by writing circuitory.But to modify the content V1 should be =0 As we designed circuit such in a way V2 can't go above Vtn so we have to force V1 > Vtn so that M2 will turn off.
+mnb 
+![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/3c57c9d8-b10b-4d52-982f-d0d91410487b)
 
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/6b8614f6-0f81-402c-89f4-88fb1ee535ea)
 
