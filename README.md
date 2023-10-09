@@ -50,15 +50,27 @@ It is a back-to-back inverter (M1, M2, M5, M6) to store data indefinitely if pow
 ### 2. Precharge Circuit
 Since the output bitlines BL and BLB) of each 6T cell are shared by all the cells in a particular column, the parasitic capacitance on those nodes is very large making it impractical for the 6T cells to drive the bitlines to full CMOS voltage levels. Instead, both the bitlines are pre-charged to the same voltage, and a differential amplifier is used to sense the difference between the bitlines to read it. The nodes are also pre-charged before a write operation to reset a previous operation. Since the sensing mechanism is a differential operation, it is critical for both the bitlines to be equal in voltage for which one PMOS transistor can be used as equalizer which will maintain the same voltage level at both the sides.
 
+![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/53a08e3a-113a-4213-bcc5-4ef885c6374c)
+
+
+
+### Simulation results are given below -
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/b0737330-9c05-4a0f-a91b-e0ccba316665)
 
 
 ### 3. Row Decoder
 Here we are using a nand based 4:16 decoder to select any row from the sixteen rows in the SRAM array based on the input address bit configurations. The 4-bit address signals a[3:0] are used to activate the transistors in such a way that, any one of the outputs will be high. For example, if all the address bits are low (0000), then wl[0] output will be high and this will select the 0th row in the SRAM array. Similarly, if all the address bits are high (1111), wl[15] output line will be high and that will select the 15th row of the SRAM array.
 
+![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/3e2374f5-b8f3-4fb1-b8a0-1ec57a4a3ad4)
+
+
 ### 4. Sense Amplifier
 The sense amplifier is used to sense the voltage difference between the bitlines and amplify it to drive the digital circuits. There are different types of sense amplifiers are present and used in the SRAM design depending upon the application. In this project, an differential amplifier-based sense amplifier is implemented. below figure shows the differential amplifier-based sense amplifier. As shown in the figure, during the read operation a small voltage difference between the bitlines ‘BL’ and ‘BLB’ is amplified by the sense amplifier and the buffer converts the output to rail-to-rail CMOS voltage. The gain of the amplifier and the threshold of the buffer is designed very carefully to achieve that function.
 
+![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/e7606b29-2837-492d-b549-bb836a1ccb13)
+
+
+### Simulation results are given below -
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/6be025d7-537e-4827-bca1-50286bf77a9d)
 
 
