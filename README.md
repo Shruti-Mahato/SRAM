@@ -35,7 +35,8 @@ The design process will involve extensive use of Electronic Design Automation (E
 
 ## Block Diagram
 
-![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/40204812-c10f-4fd2-a6c0-59761492b5f0)
+![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/0e221302-84e5-4571-99f1-8d4fadbe139c)
+
 
 ## Design Description
 the complete SRAM design contains a 6-transistor (6T) SRAM cell, a pre-charge circuit, a row decoder, control logic, a sense amplifier and a data driver. This section will discuss the design of the blocks and their simulation results.
@@ -46,18 +47,6 @@ the complete SRAM design contains a 6-transistor (6T) SRAM cell, a pre-charge ci
   
 ![6t-Page-1 drawio (1)](https://github.com/Shruti-Mahato/SRAM/assets/119694274/83556903-db58-4dc7-b617-117f56b3a1db)
 
-### Sizing of 6T 
-The core of the SRAM is a memory cell that stores one bit of information. Each cell’s area and power are critical since it decides the area of the entire chip.
-The sizing of the devices is decided by three main factors: the area of the cell, stored data in the memory cells is not corrupted while reading it, and able to overwrite the stored data during write operation.  It can be shown that M3 needs to be stronger than M5 and, M1 needs to be stronger than M3. Since the structure is symmetric, the same constraints apply for M6, M4, M2. In this design, the 6T transistors were sized for minimum area.
-
-![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/3f3ae30e-bef8-4b5d-b6c0-89d42ace8c56)
-
-![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/43ff07f8-0666-4d60-9831-883eddacf785)
-
-
-We can assume that after the access transistors are turned on, the column voltage Vc remains approximately equal to VDD. Hence, M3 operates in saturation while M1 operates in the linear region.
-
-By Calculating we can get the the (W/L) ratio of the access transistor M3 and the (W/L) ratio of M1.
 
 
 ### 2. Precharge Circuit
@@ -65,7 +54,7 @@ Since the output bitlines (BL and BLB) of each 6T cell are shared by all the cel
 
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/6384bac5-6423-4f24-a00f-68e389da0333)
 
-
+> #### To view the schematic for Precharge Circuit, click [here](Images/precharge.png)
 
 ### Simulation results are given below -
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/b0737330-9c05-4a0f-a91b-e0ccba316665)
@@ -76,7 +65,7 @@ Here we are using a nand based 4:16 decoder to select a row from the sixteen row
 
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/17a8aee3-2461-472b-b8b4-30f05ff51cab)
 
-To view the schematic of row decoder, click [here](Images/ROW_DECODER.png)
+> #### To view the schematic for row decoder, click [here](Images/ROW_DECODER.png)
 
 ### 4. Sense Amplifier
 - The sense amplifier is used to sense the voltage difference between the bitlines and amplify it to drive the digital circuits. There are different types of sense amplifiers which is used in the SRAM design depending upon the application. In this project, a differential based sense amplifier is implemented as shown in the figure below.
@@ -85,6 +74,8 @@ To view the schematic of row decoder, click [here](Images/ROW_DECODER.png)
 - Now, this small voltage difference is amplified by the sense amplifier and the buffer converts the output to rail-to-rail voltage levels (vdd to 0). The gain of the amplifier and the threshold of the buffer is designed very carefully to achieve this function.
 
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/e20217e6-78f0-47a7-899e-e3c207d07ad1)
+
+> #### To view the schematic for Sense Amplifier, click [here](Images/SENSE_Amp.png)
 
 
 ### Simulation results are given below -
@@ -95,6 +86,8 @@ The circuit that is responsible for correct writing of data into the memory cell
 > Note that the data should be stable before the writing process. So, we should give the data before the WL signal became HIGH for which enables the access transistor to overwrite the stored data.
 
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/a7fb7dce-c3c5-40e8-b63a-27939f529942)
+
+> #### To view the schematic for Write Driver, click [here](Images/data_driver.png)
 
 ## Working of SRAM
 ### Read Operation
@@ -107,9 +100,33 @@ The circuit that is responsible for correct writing of data into the memory cell
 
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/6a55f4d8-7231-4385-8b88-f0f622d4fbd9)
 
+### Sizing of 6T 
+The core of the SRAM is a memory cell that stores one bit of information. Each cell’s area and power are critical since it decides the area of the entire chip.
+The sizing of the devices is decided by three main factors: the area of the cell, stored data in the memory cells is not corrupted while reading it, and able to overwrite the stored data during write operation. 
+assuming the SRAM is storing 0 at Q node. Before the read operation,both the bitlines are precharged to vdd. After the access transistors are turned on, the node voltage of V1 will start increasing as the C is discharging through M3 and M1. It should not be more than the Vth of M2 otherwise the stored value will get affected and we willl not be able to read the corect data. 
+![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/48cde1ca-b8b2-4220-a576-8181e203b4c1)
+
+Therefore, **$V1 \leq Vth(M2)$ -----(1)**
+
+By taking **V1 = 0.3**, We can find that M3 operates in saturation while M1 operates in the linear region. So the current equation for both transistor is as follows-
+
+![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/3f3ae30e-bef8-4b5d-b6c0-89d42ace8c56)
+
+![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/43ff07f8-0666-4d60-9831-883eddacf785)
+
+As same I is flowing through M3 and M1.<br>
+So, $Id(M3) = Id(M1)$   ------(2)
+
+By putting the above I equation in eq. 2, we can get the the (W/L) ratio of the access transistor M3 and the (W/L) ratio of M1.
+By putting the values, we get
+It can be shown that M1 needs to be stronger than M3 for correct read operation.
+
+Similarly we can calculate the size for M5 transistor during write operation.let's assume the stored value is 1. So, we want to write 0 at Q. data(0) is coonected to BL. AFter the  access transistor 
+
+It can be shown that M3 needs to be stronger than M5 and, M1 needs to be stronger than M3. Since the structure is symmetric, the same constraints apply for M6, M4, M2. In this design, the 6T transistors were sized for minimum area.
 ### Write Operation
 Now let's consider initially the circuit was containing 1 and we want to modify the content to 0.Now for the cell containing 1 effective circuit will be like :Now to write 0 into it we forced the bit line to 0 by writing circuitory.But to modify the content V1 should be =0 As we designed circuit such in a way V2 can't go above Vtn so we have to force V1 > Vtn so that M2 will turn off.
-mnb 
+
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/bb7c4e52-8f90-4798-b414-b3986ec5964a)
 
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/6b8614f6-0f81-402c-89f4-88fb1ee535ea)
@@ -118,3 +135,13 @@ mnb
 ## Static Noise Margin
 
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/aae0afa4-d3cc-492f-8e93-a8d446a000c4)
+
+## Top level Schematic
+The top level sram schematic is given below. 
+
+![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/f2949d42-7833-4883-a3ba-a031e8817838)
+
+Here, we are testing the schematic by writing two data at two different address and then reading the data from the corresponding address line.
+<img src="https://github.com/Shruti-Mahato/SRAM/assets/119694274/6e353610-e949-4d84-97c5-d509f588f289" width = "1000">
+
+Output waveforms are given below- 
