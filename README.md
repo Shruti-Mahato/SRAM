@@ -110,6 +110,7 @@ Therefore, **$V1 \leq Vth(M2)$ -----(1)**
 
 By taking **V1 = 0.3**, We can find that M3 operates in saturation while M1 operates in the linear region. So the current equation for both transistor is as follows-
 
+$$k_{n,3} \cdot 2(V_{DD} - V_1 - V_{T,n})^2 = k_{n,1} \cdot 2\left(2(V_{DD} - V_{T,n})V_1 - V_1^2\right)$$
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/3f3ae30e-bef8-4b5d-b6c0-89d42ace8c56)
 
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/43ff07f8-0666-4d60-9831-883eddacf785)
@@ -119,11 +120,26 @@ So, $Id(M3) = Id(M1)$   ------(2)
 
 By putting the above I equation in eq. 2, we can get the the (W/L) ratio of the access transistor M3 and the (W/L) ratio of M1.
 By putting the values, we get
-It can be shown that M1 needs to be stronger than M3 for correct read operation.
+$$k_{n,3}k_{n,1} = (WL)^3(WL)^1 < 2(V_{DD} - 1.5V_{T,a})V_{T,a}(V_{DD} - 2V_{T,a})^2$$
+It can be shown that M1 needs to be stronger than M3 for correct read operation. To summarize, the transistor M2 will remain in cut-off during the read "0" operation if condition (10.5) is satisfied.
 
-Similarly we can calculate the size for M5 transistor during write operation.let's assume the stored value is 1. So, we want to write 0 at Q. data(0) is coonected to BL. AFter the  access transistor 
+Similarly we can calculate the size for M5 transistor during write operation.
+Now, consider the write "0" operation, assuming that a logic "1" is stored in the SRAM cell initially. The voltage levels in the CMOS SRAM cell at the beginning of the data-write operation is shown in the below figure. The transistors MI and M6 are turned off, while the transistors M2 and M5 operate in the linear mode. Thus, the internal node voltages are V1 = vdd and V2 = 0 before the cell access (or pass) transistors M3 and M4 are turned on.
+
+The column voltage $V_{c}$ is forced to logic "0" level by the write driver. thus, we can say that $V_{c}$ is approximately equal to 0 V. Once the pass transistors M3 and M4 are turned on by the row decoder circuit, we expect that the node voltage V2 remains below the threshold voltage of M1, since M2 and M4 are designed according to condition (1). Consequently, the voltage level at node (2) would not be suffecient enough to turn on MI. To change the stored information, i.e., to force $V_{1}$ to 0 V and  $V_{2}$ to vdd, the node voltage $V_{1}$, must be reduced below thek p, S 2 (0-V threshold voltage of M2, so that M2 turns off first. 
+When $V_{1} \leq Vth(M2)$  the transistor M3 operates in the linear region while M5 operates in saturation.
+
+$$\frac{k_p,5}{2}  (0 - V_{DD} - V_{T,p})^2 = \frac{k_n,3}{2} \left(2(V_{DD} - V_{T,n})V_{T,n} - V_{T,n}^2\right)$$
+
+Rearranging this condition results in:
+$$\frac{k_{p,5}}{k_{n,3}} < \frac{2(V_{DD} - 1.5V_{T,n})V_{T,n}}{(V_{DD} + V_{T,p})^2}$$
+
+$$\frac{(W/L)5}{(W/L)3} < \frac{\mu_n}{\mu_p} \cdot \frac{2(V_{DD} - 1.5V_{T,n})V_{T,n}}{(V_{DD} + V_{T,n})^2}$$
+
+To summarize, the transistor M2 will be forced into cut-off mode during the write "0" operation if condition () is satisfied. This will guarantee that MI turns on, changing the stored information. 
 
 It can be shown that M3 needs to be stronger than M5 and, M1 needs to be stronger than M3. Since the structure is symmetric, the same constraints apply for M6, M4, M2. In this design, the 6T transistors were sized for minimum area.
+
 ### Write Operation
 Now let's consider initially the circuit was containing 1 and we want to modify the content to 0.Now for the cell containing 1 effective circuit will be like :Now to write 0 into it we forced the bit line to 0 by writing circuitory.But to modify the content V1 should be =0 As we designed circuit such in a way V2 can't go above Vtn so we have to force V1 > Vtn so that M2 will turn off.
 
