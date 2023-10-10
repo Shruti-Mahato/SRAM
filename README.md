@@ -76,6 +76,8 @@ Here we are using a nand based 4:16 decoder to select a row from the sixteen row
 
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/17a8aee3-2461-472b-b8b4-30f05ff51cab)
 
+To view the schematic of row decoder, click [here](Images/ROW_DECODER.png)
+
 ### 4. Sense Amplifier
 - The sense amplifier is used to sense the voltage difference between the bitlines and amplify it to drive the digital circuits. There are different types of sense amplifiers which is used in the SRAM design depending upon the application. In this project, a differential based sense amplifier is implemented as shown in the figure below.
 - Initially, during the precharge, the node voltage for BL and BLB is charged upto vdd, which is a input to the M2 and M3 transistor. Constant I is provided to the M0, which is in Saturation region and it behaves like current mirror circuit. So, equal I will flow from M1. Similary we can see that M4 also acts as current mirror circuit. So, equal I will flow from M5. Therefore, we can say that the M1 I is equally divided into two paths beacause of the circuit symmetricity.
