@@ -164,6 +164,10 @@ Now let's consider initially the circuit was containing 1 and we want to modify 
 
 
 ## Static Noise Margin
+Static Noise Margin (SNM) is a measure of the robustness of a static random-access memory (SRAM) cell. It's important for determining the stability and reliability of data storage in SRAM cells. An SNM of 6T SRAM is typically evaluated in terms of the read and write stability margins.  
+Read Margin (Read SNM): This measures how much the SRAM cell can tolerate noise or variability in the data when you're trying to read it without making an incorrect decision.  
+Write Margin (Write SNM): This measures how much noise or variability the SRAM cell can tolerate when you're trying to write data into it without causing unintended switching of the stored values.  
+In order to find the Static noise margin of SRAM cell, we used the butterfly curve which is a graphical representation of the SRAM cell's behavior. In this, we ﬁnd VTC of inverter 1 and inverter 2 of memory cell. The minimum side of largest square that can be ﬁxed within the lobes of the butterﬂy curve represent SNM of the SRAM bitcell.
 
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/aae0afa4-d3cc-492f-8e93-a8d446a000c4)
 
