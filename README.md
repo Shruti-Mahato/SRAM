@@ -72,7 +72,7 @@ $$\frac{k_{n,3}}{k_{n,1}} = \frac{(W/L)3}{(W/L)1} \leq \frac{2(V_{DD} - V_{T,n})
 By substituating the values for $V_{T,n}= 0.67V$ and $V_1 = 0.3V$, we get 
 $$\frac{(W/L)3}{(W/L)1} \leq 0.85 ------(4)$$
 
-It can be shown that M1 needs to be stronger than M3 for correct read operation. To summarize, the transistor M2 will remain in cut-off during the read "0" operation if condition (4) is satisfied.
+It can be shown that M1 needs to be stronger than M3 for correct read operation. To summarize, the transistor M2 will remain in cut-off during the read "0" operation if condition (4) is satisfied. Since the structure is symmetric, the same constraints apply for M4 and M2.
 
 Similarly we can calculate the size for M5 transistor during write operation.
 Now, consider the write "0" operation, assuming that a logic "1" is stored in the SRAM cell initially. The voltage levels in the CMOS SRAM cell at the beginning of the data-write operation is shown in the below figure. The transistors MI and M6 are turned off, while the transistors M2 and M5 operate in the linear mode. Thus, the internal node voltages are V1 = vdd and V2 = 0 before the cell access (or pass) transistors M3 and M4 are turned on.  
@@ -88,7 +88,7 @@ $$Id(M5) = \frac{k_{n,3}}{2}(V_{GS} - V_{T,n})^2$$
 As same I is flowing through M3 and M5.<br>
 So, $Id(M3) = Id(M5)$   ------(5)
 
-By putting the corresponding values for $V_{GS}$, $V_{DS} for M3 and M5, we get  
+By putting the corresponding values for $V_{GS}$, $V_{DS}$ for M3 and M5, we get  
 $$\frac{k_p,5}{2}  (0 - V_{DD} - V_{T,p})^2 = \frac{k_n,3}{2} \left(2(V_{DD} - V_{T,n})V_{1} - V_{1}^2\right)$$
 
 Rearranging this condition results in:  
@@ -99,8 +99,8 @@ $$\frac{(W/L)5}{(W/L)3} < \frac{\mu_n}{\mu_p} \cdot \frac{2(V_{DD} - V_{T,n})V_{
 By putting the values for $\frac{\mu_n}{\mu_p} = 5$ , $V_{T_p} = V_{T,n}= 0.67$ , $V_1 = 0.3$, we get  
 $$\\frac{(W/L)5}{(W/L)3} \leq 2.3 --------(7)$$ 
 
-To summarize, the transistor M2 will be forced into cut-off mode during the write "0" operation if condition (5) is satisfied. This will guarantee that MI turns on, and changing the stored information. 
-It can be shown that M3 needs to be stronger than M5 and, M1 needs to be stronger than M3. Since the structure is symmetric, the same constraints apply for M6, M4, M2. In this design, the 6T transistors were sized for minimum area.
+To summarize, the transistor M2 will be forced into cut-off mode during the write "0" operation if condition (5) is satisfied. This will guarantee that MI turns on, and changing the stored information. Since the structure is symmetric, the same constraints apply for M4 and M6. 
+It can be shown that M3 needs to be stronger than M5 and, M1 needs to be stronger than M3. In this design, the 6T transistors were sized for minimum area.
 
 
 ### 2. Precharge Circuit
