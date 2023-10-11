@@ -103,25 +103,29 @@ The circuit that is responsible for correct writing of data into the memory cell
 ### Sizing of 6T 
 The core of the SRAM is a memory cell that stores one bit of information. Each cell’s area and power are critical since it decides the area of the entire chip.
 The sizing of the devices is decided by three main factors: the area of the cell, stored data in the memory cells is not corrupted while reading it, and able to overwrite the stored data during write operation. 
-assuming the SRAM is storing 0 at Q node. Before the read operation,both the bitlines are precharged to vdd. After the access transistors are turned on, the node voltage of V1 will start increasing as the C is discharging through M3 and M1. It should not be more than the Vth of M2 otherwise the stored value will get affected and we willl not be able to read the corect data. 
+assuming the SRAM is storing 0 at Q node. Before the read operation,both the bitlines are precharged to vdd. After the access transistors are turned on, the node voltage of V1 will start increasing as the C is discharging through M3 and M1. It should not be more than the Vth of M2 otherwise the stored value will get affected and we willl not be able to read the corect data.
+
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/48cde1ca-b8b2-4220-a576-8181e203b4c1)
 
-Therefore, **$V1 \leq Vth(M2)$ -----(1)**
+Therefore,&emsp; **$V1 \leq Vth(M2)------(1)$**
+By taking $V_1 = 0.3$, We can find that M3 operates in saturation while M1 operates in the linear region. So the current equation for both the transistor is as follows-
 
-By taking **V1 = 0.3**, We can find that M3 operates in saturation while M1 operates in the linear region. So the current equation for both transistor is as follows-
+$$Id(M1) = \frac{k_{n,1}}{2}\left(2(V_{GS} - V_{T,n})V_{DS} - V_{DS}^2\right)$$
 
-$$k_{n,3} \cdot 2(V_{DD} - V_1 - V_{T,n})^2 = k_{n,1} \cdot 2\left(2(V_{DD} - V_{T,n})V_1 - V_1^2\right)$$
-![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/3f3ae30e-bef8-4b5d-b6c0-89d42ace8c56)
-
-![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/43ff07f8-0666-4d60-9831-883eddacf785)
+$$Id(M3) = \\frac{k_{n,3}}{2}(V_{GS} - V_{T,n})^2$$
 
 As same I is flowing through M3 and M1.<br>
-So, $Id(M3) = Id(M1)$   ------(2)
+So, $Id(M3) = Id(M1)   ------(2)$
 
-By putting the above I equation in eq. 2, we can get the the (W/L) ratio of the access transistor M3 and the (W/L) ratio of M1.
-By putting the values, we get
-$$k_{n,3}k_{n,1} = (WL)^3(WL)^1 < 2(V_{DD} - 1.5V_{T,a})V_{T,a}(V_{DD} - 2V_{T,a})^2$$
-It can be shown that M1 needs to be stronger than M3 for correct read operation. To summarize, the transistor M2 will remain in cut-off during the read "0" operation if condition (10.5) is satisfied.
+By putting the corresponding values for $V_{GS}$, $V_{DS}$ for M3 and M1, we get  
+$$\frac{k_{n,3}}{2}(V_{DD} - V_1 - V_{T,n})^2 = \frac{k_{n,1}}{2}\left(2(V_{DD} - V_{T,n})V_1 - V_1^2\right)$$
+
+$$\frac{k_{n,3}}{k_{n,1}} = \frac{(W/L)3}{(W/L)1} \leq \frac{2(V_{DD} - V_{T,n})V_{1}-V_{1}^2}{(V_{DD} - V_{T,n})^2}------(3)$$
+
+By putting the values for $V_{T,n}= 0.67V$ and $V_1 = 0.3V$, we get 
+$$\frac{(W/L)3}{(W/L)1} \leq 0.85 ------(4)$$
+
+It can be shown that M1 needs to be stronger than M3 for correct read operation. To summarize, the transistor M2 will remain in cut-off during the read "0" operation if condition (3) is satisfied.
 
 Similarly we can calculate the size for M5 transistor during write operation.
 Now, consider the write "0" operation, assuming that a logic "1" is stored in the SRAM cell initially. The voltage levels in the CMOS SRAM cell at the beginning of the data-write operation is shown in the below figure. The transistors MI and M6 are turned off, while the transistors M2 and M5 operate in the linear mode. Thus, the internal node voltages are V1 = vdd and V2 = 0 before the cell access (or pass) transistors M3 and M4 are turned on.
@@ -129,15 +133,25 @@ Now, consider the write "0" operation, assuming that a logic "1" is stored in th
 The column voltage $V_{c}$ is forced to logic "0" level by the write driver. thus, we can say that $V_{c}$ is approximately equal to 0 V. Once the pass transistors M3 and M4 are turned on by the row decoder circuit, we expect that the node voltage V2 remains below the threshold voltage of M1, since M2 and M4 are designed according to condition (1). Consequently, the voltage level at node (2) would not be suffecient enough to turn on MI. To change the stored information, i.e., to force $V_{1}$ to 0 V and  $V_{2}$ to vdd, the node voltage $V_{1}$, must be reduced below thek p, S 2 (0-V threshold voltage of M2, so that M2 turns off first. 
 When $V_{1} \leq Vth(M2)$  the transistor M3 operates in the linear region while M5 operates in saturation.
 
-$$\frac{k_p,5}{2}  (0 - V_{DD} - V_{T,p})^2 = \frac{k_n,3}{2} \left(2(V_{DD} - V_{T,n})V_{T,n} - V_{T,n}^2\right)$$
+$$Id(M3) = \frac{k_{n,1}}{2}\left(2(V_{GS} - V_{T,n})V_{DS} - V_{DS}^2\right)$$
 
-Rearranging this condition results in:
-$$\frac{k_{p,5}}{k_{n,3}} < \frac{2(V_{DD} - 1.5V_{T,n})V_{T,n}}{(V_{DD} + V_{T,p})^2}$$
+$$Id(M5) = \frac{k_{n,3}}{2}(V_{GS} - V_{T,n})^2$$
 
-$$\frac{(W/L)5}{(W/L)3} < \frac{\mu_n}{\mu_p} \cdot \frac{2(V_{DD} - 1.5V_{T,n})V_{T,n}}{(V_{DD} + V_{T,n})^2}$$
+As same I is flowing through M3 and M5.<br>
+So, $Id(M3) = Id(M5)$   ------(5)
 
-To summarize, the transistor M2 will be forced into cut-off mode during the write "0" operation if condition () is satisfied. This will guarantee that MI turns on, changing the stored information. 
+By putting the corresponding values for $V_{GS}$, $V_{DS} for M3 and M5, we get  
+$$\frac{k_p,5}{2}  (0 - V_{DD} - V_{T,p})^2 = \frac{k_n,3}{2} \left(2(V_{DD} - V_{T,n})V_{1} - V_{1}^2\right)$$
 
+Rearranging this condition results in:  
+$$\frac{k_{p,5}}{k_{n,3}} \leq \frac{2(V_{DD} - V_{T,n})V_{1}-V_{1}^2}{(V_{DD} - V_{T,p})^2}------(6)$$
+
+$$\frac{(W/L)5}{(W/L)3} < \frac{\mu_n}{\mu_p} \cdot \frac{2(V_{DD} - V_{T,n})V_{1}-V_{1}^2}{(V_{DD} - V_{T,p})^2}$$
+
+By putting the values for $\frac{\mu_n}{\mu_p} = 5$ , $V_{T_p} = V_{T,n}= 0.67$ , $V_1 = 0.3$, we get  
+$$\\frac{(W/L)5}{(W/L)3} \leq 2.3 --------(7)$$ 
+
+To summarize, the transistor M2 will be forced into cut-off mode during the write "0" operation if condition (5) is satisfied. This will guarantee that MI turns on, and changing the stored information. 
 It can be shown that M3 needs to be stronger than M5 and, M1 needs to be stronger than M3. Since the structure is symmetric, the same constraints apply for M6, M4, M2. In this design, the 6T transistors were sized for minimum area.
 
 ### Write Operation
