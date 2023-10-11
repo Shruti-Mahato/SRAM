@@ -183,12 +183,12 @@ In order to find the Static noise margin of SRAM cell, we used the butterfly cur
 Creating a top-level schematic and testbench for a 6T SRAM cell in a 0.18μm CMOS technology node involves several steps. The key components are shown in the below schematic. The signal description are as follows -  
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/f2949d42-7833-4883-a3ba-a031e8817838)
 
-1. vdd , gnd = Supply Voltage and Ground
-2. WL = Wordline
-3. BL, BLB = Bitlines
-4. 
-5. ctrl = Indicate the control signal for read, write, hold operation
-6. rw = high during read, low during write operation
+1. PC = To precharge the Bitlines
+2. WL = To enable the access transistor
+3. ctrl = Indicate the control signal for read, write, hold operation
+4. rw = high during read, low during write operation
+5. sa = To enable the Sense amplifier
+6. idc = supply current from BGR
 
 ## Testbench
 
