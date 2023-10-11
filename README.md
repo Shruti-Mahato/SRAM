@@ -1,5 +1,5 @@
 # Title
-Design and Implementation of a 16-Byte SRAM in 0.18μm CMOS Technology for low power IoT application.
+Design and Implementation of 16-Byte SRAM in 0.18μm CMOS Technology for low power IoT application.
 
 # What is SRAM ?
 - SRAM, which stands for Static Random-Access Memory, is a type of computer memory that is used for storing data that needs to be accessed quickly and frequently by a computer's central processing unit (CPU).  SRAM is one of the two primary types of volatile memory used in computers, with the other being DRAM (Dynamic Random-Access Memory).
@@ -8,10 +8,12 @@ Design and Implementation of a 16-Byte SRAM in 0.18μm CMOS Technology for low p
 
 ## Table of Contents
 - [Introduction](#introduction)
+- [Specification](#specification)
 - [Tools used](#tools-used)
 - [Block Diagram](#block-diagram)
 - [Design Description](#design-description)
    - [6-Transistor (6T) CMOS SRAM Cell](#6-transistor-6t-cmos-sram-cell)
+     - [Sizing of 6T](#sizing-of-6t)
    - [Precharge Circuit](#precharge-circuit)
    - [Row Decoder](#row-decoder)
    - [Sense Amplifier](#sense-amplifier)
@@ -25,6 +27,13 @@ The primary objective of this project is to design a 16-byte SRAM with optimal p
 - Wordline and Bitline Design: Design of wordline and bitline circuit that facilitate fast data read and write operations, minimizing access time and maximizing data throughput.
 - Sense Amplifier: Implementation of differential based sense amplifiers for accurate data sensing and amplification.
 
+## Specification
+- Memory Size --> 16x8-bit (16-byte)
+- Technology used --> 0.18um CMOS Technology
+- Operating voltage --> 1.8V
+- Operating frequency --> MHz
+- Access time --> less than 30ns
+
 ## Tools used
 The design process will involve extensive use of Electronic Design Automation (EDA) tools for schematic, simulation, and layout design.
 
@@ -32,14 +41,13 @@ The design process will involve extensive use of Electronic Design Automation (E
 - Simulation - [Cadence Spectre Simulator](https://en.wikipedia.org/wiki/Spectre_Circuit_Simulator)
 - Layout - [Cadence Virtuoso Layout Suite](https://www.cadence.com/en_US/home/tools/custom-ic-analog-rf-design/layout-design/virtuoso-layout-suite.html)
 
-
 ## Block Diagram
 
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/0e221302-84e5-4571-99f1-8d4fadbe139c)
 
 
 ## Design Description
-the complete SRAM design contains a 6-transistor (6T) SRAM cell, a pre-charge circuit, a row decoder, control logic, a sense amplifier and a data driver. This section will discuss the design of the blocks and their simulation results.
+The complete SRAM design contains a 6-transistor (6T) SRAM cell, a pre-charge circuit, a row decoder, control logic, a sense amplifier and a data driver. This section will discuss the design of the blocks and their simulation results.
 
 ### 1. 6-Transistor (6T) CMOS SRAM Cell
 - Each SRAM cell consists of two cross-coupled inverters (also known as a bistable circuit) and additional access transistors for read and write operations. These inverters form a latch, which can hold data in a stable state without the need for periodic refreshing (unlike DRAM).
@@ -164,19 +172,35 @@ Now let's consider initially the circuit was containing 1 and we want to modify 
 
 
 ## Static Noise Margin
-Static Noise Margin (SNM) is a measure of the robustness of a static random-access memory (SRAM) cell. It's important for determining the stability and reliability of data storage in SRAM cells. An SNM of 6T SRAM is typically evaluated in terms of the read and write stability margins.  
-Read Margin (Read SNM): This measures how much the SRAM cell can tolerate noise or variability in the data when you're trying to read it without making an incorrect decision.  
-Write Margin (Write SNM): This measures how much noise or variability the SRAM cell can tolerate when you're trying to write data into it without causing unintended switching of the stored values.  
+**Static Noise Margin (SNM)** is a measure of tolerance of a static random-access memory (SRAM) cell. It's important for determining the stability and reliability of data storage in SRAM cells. An SNM of 6T SRAM is typically evaluated in terms of the read and write stability margins.  
+**Read Margin (Read SNM):** This measures how much the SRAM cell can tolerate noise or variability in the data when you're trying to read it without making an incorrect decision.  
+**Write Margin (Write SNM):** This measures how much noise or variability the SRAM cell can tolerate when you're trying to write data into it without causing unintended switching of the stored values.  
 In order to find the Static noise margin of SRAM cell, we used the butterfly curve which is a graphical representation of the SRAM cell's behavior. In this, we ﬁnd VTC of inverter 1 and inverter 2 of memory cell. The minimum side of largest square that can be ﬁxed within the lobes of the butterﬂy curve represent SNM of the SRAM bitcell.
 
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/aae0afa4-d3cc-492f-8e93-a8d446a000c4)
 
 ## Top level Schematic
-The top level sram schematic is given below. 
-
+Creating a top-level schematic and testbench for a 6T SRAM cell in a 0.18μm CMOS technology node involves several steps. The key components are shown in the below schematic. The signal description are as follows -  
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/f2949d42-7833-4883-a3ba-a031e8817838)
 
+1. vdd , gnd = Supply Voltage and Ground
+2. WL = Wordline
+3. BL, BLB = Bitlines
+4. 
+5. ctrl = Indicate the control signal for read, write, hold operation
+6. rw = high during read, low during write operation
+
+## Testbench
+
+1. Transient Analysis : Create transient analysis simulations for read and write operations. For example:
+   - Write: Apply control signals to write data (0 and 1) into the SRAM cell and observe the cell's response.
+   - Read: Apply control signals to read data from the SRAM cell and observe the cell's response.
 Here, we are testing the schematic by writing two data at two different address and then reading the data from the corresponding address line.
 <img src="https://github.com/Shruti-Mahato/SRAM/assets/119694274/6e353610-e949-4d84-97c5-d509f588f289" width = "1000">
 
 Output waveforms are given below- 
+
+
+2. Corner Simulation : To test the SRAM cell under different corner cases (e.g., process, voltage, temperature) to ensure robustness.
+
+
