@@ -192,15 +192,19 @@ Creating a top-level schematic and testbench for a 6T SRAM cell in a 0.18μm CMO
 
 ## Testbench
 
-1. Transient Analysis : Create transient analysis simulations for read and write operations. For example:
+### 1. Transient Analysis : 
+Create transient analysis simulations for read and write operations. For example:
    - Write: Apply control signals to write data (0 and 1) into the SRAM cell and observe the cell's response.
    - Read: Apply control signals to read data from the SRAM cell and observe the cell's response.
-Here, we are testing the schematic by writing two data at two different address and then reading the data from the corresponding address line.
+Here, we are writing two data at two different address and then reading the data from the corresponding address line.
+
+![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/cc3e48e0-25cc-481f-9792-d276f4681b9d)
+
 <img src="https://github.com/Shruti-Mahato/SRAM/assets/119694274/6e353610-e949-4d84-97c5-d509f588f289" width = "1000">
 
 Output waveforms are given below- 
 
-
-2. Corner Simulation : To test the SRAM cell under different corner cases (e.g., process, voltage, temperature) to ensure robustness.
+### 2. Corner Simulation : 
+To test the SRAM cell under different corner cases (e.g., process, voltage, temperature) to ensure robustness.
 
 
