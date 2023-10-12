@@ -196,15 +196,33 @@ Creating a top-level schematic and testbench for a 6T SRAM cell in a 0.18μm CMO
 Create transient analysis simulations for read and write operations. For example:
    - Write: Apply control signals to write data (0 and 1) into the SRAM cell and observe the cell's response.
    - Read: Apply control signals to read data from the SRAM cell and observe the cell's response.
-Here, we are writing two data at two different address and then reading the data from the corresponding address line.
+     
+Here, we are writing two data at two different address and then reading the data from the corresponding address line. Output waveforms is given below -
 
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/cc3e48e0-25cc-481f-9792-d276f4681b9d)
+
+![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/cad1a5e2-54f7-4b33-b819-e6c8e1a154cf)
+
+![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/8786472d-1e4a-4779-a2e2-cba29f414efe)
 
 <img src="https://github.com/Shruti-Mahato/SRAM/assets/119694274/6e353610-e949-4d84-97c5-d509f588f289" width = "1000">
 
 Output waveforms are given below- 
 
+## Delay calculation :
+Read 0 delay - Delay between the rising edge of ctrl signal and 90% of the falling edge of the output.  
+Read 1 delay - Delay between the falling edge of ctrl signal and 90% of the rising edge of the output.  
+Write Delay - Delay between the rising edge of ctrl signal and the internal node of SRAM(Q/QB) when data gets overwritten to 90-95%  
+Pre Charge Delay - Delay between the falling edge of PC and the 95% of rising edge of BL & BLB.
+
 ### 2. Corner Simulation : 
-To test the SRAM cell under different corner cases (e.g., process, voltage, temperature) to ensure robustness.
+To test the SRAM cell under different corner cases (e.g., process, voltage, temperature) to ensure the robustness.
+
+For finding out the maximum operating frequency for the SRAM:
+PreCharge signal ON time
+   Take the maximum delay from all the process corner (for both 1 -> 0 and 0 -> 1) and increase the Precharge ON time by that (amount+20%)
+
+Write Signal ON time
+Take maximum delay of Write delay from all the process corner and set the Write signal ON time by that (amount+20%)
 
 
