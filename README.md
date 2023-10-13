@@ -43,13 +43,13 @@ The design process will involve extensive use of Electronic Design Automation (E
 
 ## Block Diagram
 
-<p align="center">
-  <img src="![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/0e221302-84e5-4571-99f1-8d4fadbe139c)>
-  Fig.1: Block diagram of a typical SRAM
+<p> 
+  <img src="Images/Block_diagram_of_SRAM.png">
+   Fig.1: Block diagram of a typical SRAM
 </p>
 
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/0e221302-84e5-4571-99f1-8d4fadbe139c)
-
+*Fig.1: Block diagram of a typical SRAM*
 
 ## Design Description
 The complete SRAM design contains a 6-transistor (6T) SRAM cell, a pre-charge circuit, a row decoder, control logic, a sense amplifier and a data driver. This section will discuss the design of the blocks and their simulation results.
