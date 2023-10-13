@@ -43,17 +43,9 @@ The design process will involve extensive use of Electronic Design Automation (E
 
 ## Block Diagram
 
-<p align="center">
-
-  <img src="/Images/Block_diagram_of_SRAM.png">
-   Fig.1: Block diagram of a typical IoT sensor node 
-</p>
-
-![](https://github.com/Shruti-Mahato/SRAM/assets/119694274/0e221302-84e5-4571-99f1-8d4fadbe139c)
-
-<p align="center">
-  Fig.1: Block diagram of a typical SRAM
-</p>
+| <img src="/Images/Block_diagram_of_SRAM.png"> |
+| :---: |
+| Fig.1: Block diagram of a typical SRAM |
 
 ## Design Description
 The complete SRAM design contains a 6-transistor (6T) SRAM cell, a pre-charge circuit, a row decoder, control logic, a sense amplifier and a data driver. This section will discuss the design of the blocks and their simulation results.
@@ -61,7 +53,11 @@ The complete SRAM design contains a 6-transistor (6T) SRAM cell, a pre-charge ci
 ### 1. 6-Transistor (6T) CMOS SRAM Cell
 - Each SRAM cell consists of two cross-coupled inverters (also known as a bistable circuit) and additional access transistors for read and write operations. These inverters form a latch, which can hold data in a stable state without the need for periodic refreshing (unlike DRAM).
 - It's a back-to-back inverter (M1, M2, M5, M6) to store data indefinitely if power is provided to the cell. The access transistors (M3, M4) are used to read and write data into the SRAM cell. 
-  
+
+| <img src="/Images/png"> |
+| :---: |
+| Fig.2: 6T SRAM Cell |
+
 ![6t-Page-1 drawio (1)](https://github.com/Shruti-Mahato/SRAM/assets/119694274/83556903-db58-4dc7-b617-117f56b3a1db)
 <p align="center">
   Fig.2: 6T SRAM Cell
@@ -73,11 +69,14 @@ The core of the SRAM is a memory cell that stores one bit of information. Each c
 The sizing of the devices is decided by three main factors: the area of the cell, stored data in the memory cells is not corrupted while reading it, and able to overwrite the stored data during write operation. 
 Assuming the SRAM is storing 0 at Q node. Before the read operation, both the bitlines are precharged to vdd. After the access transistors are turned on, the node voltage of V1 will start increasing as the C is discharging through M3 and M1. It should not be more than the Vth of M2 otherwise the stored data will get corrupted.
 
+| <img src="/Images/Schematic_6T"> |
+| :---: |
+| Fig.3: Read opeartion |
+
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/48cde1ca-b8b2-4220-a576-8181e203b4c1)
 <p align="center">
   Fig.3: Read opeartion
 </p>
-
 
 Therefore,&emsp; $V1 \leq Vth(M2)------(1)$  
 By taking $V_1 = 0.3$, We can find that M3 operates in saturation while M1 operates in the linear region. So the current equation for both the transistor is as follows-
@@ -100,7 +99,13 @@ $$\frac{(W/L)3}{(W/L)1} \leq 0.85 ------(4)$$
 It can be shown that M1 needs to be stronger than M3 for correct read operation. To summarize, the transistor M2 will remain in cut-off during the read "0" operation if condition (4) is satisfied. Since the structure is symmetric, the same constraints apply for M4 and M2.
 
 Similarly we can calculate the size for M5 transistor during write operation.
-Now, consider the write "0" operation, assuming that a logic "1" is stored in the SRAM cell initially. The voltage levels in the CMOS SRAM cell at the beginning of the data-write operation is shown in the below figure. The transistors MI and M6 are turned off, while the transistors M2 and M5 operate in the linear mode. Thus, the internal node voltages are V1 = vdd and V2 = 0 before the cell access (or pass) transistors M3 and M4 are turned on.  
+Now, consider the write "0" operation, assuming that a logic "1" is stored in the SRAM cell initially. The voltage levels in the CMOS SRAM cell at the beginning of the data-write operation is shown in the below figure. The transistors MI and M6 are turned off, while the transistors M2 and M5 operate in the linear mode. Thus, the internal node voltages are V1 = vdd and V2 = 0 before the cell access (or pass) transistors M3 and M4 are turned on. 
+
+| <img src="/Images/Schematic_6T"> |
+| :---: |
+| Fig.3: Read opeartion |
+
+
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/bb7c4e52-8f90-4798-b414-b3986ec5964a)
 <p align="center">
   Fig.4: Write Operation
@@ -135,6 +140,10 @@ It can be shown that M3 needs to be stronger than M5 and, M1 needs to be stronge
 ### 2. Precharge Circuit
 Since the output bitlines (BL and BLB) of each 6T cell are shared by all the cells in a particular column, the parasitic capacitance on those nodes is very large making it impractical for the 6T cells to drive the bitlines to full CMOS voltage levels. Instead, both the bitlines are pre-charged to the same voltage, and a differential amplifier is used to sense the difference between the bitlines to read it. The nodes are also pre-charged before a write operation to reset a previous operation. Since the sensing mechanism is a differential operation, it is critical for both the bitlines to be equal in voltage for which one PMOS transistor can be used as equalizer which will maintain the same voltage level at both the sides.
 
+| <img src="/Images/precharge.png"> |
+| :---: |
+| Fig.5: Circuit diagram of precharge circuit |
+
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/6384bac5-6423-4f24-a00f-68e389da0333)
 <p align="center">
   Fig.5: Circuit diagram of precharge circuit
@@ -149,6 +158,9 @@ Since the output bitlines (BL and BLB) of each 6T cell are shared by all the cel
   Fig.6: Timing diagram of precharge circuit
 </p>
 
+| <img src="/[Images/precharge.png"](https://github.com/Shruti-Mahato/SRAM/assets/119694274/b0737330-9c05-4a0f-a91b-e0ccba316665)> |
+| :---: |
+| Fig.5: Circuit diagram of precharge circuit |
 
 
 ### 3. Row Decoder
