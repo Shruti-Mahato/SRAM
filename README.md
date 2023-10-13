@@ -43,6 +43,11 @@ The design process will involve extensive use of Electronic Design Automation (E
 
 ## Block Diagram
 
+<p align="center">
+  <img src="![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/0e221302-84e5-4571-99f1-8d4fadbe139c)>
+  Fig.1: Block diagram of a typical SRAM
+</p>
+
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/0e221302-84e5-4571-99f1-8d4fadbe139c)
 
 
