@@ -31,7 +31,7 @@ The primary objective of this project is to design a 16-byte SRAM with optimal p
 - Memory Size --> 16x8-bit (16-byte)
 - Technology used --> 0.18um CMOS Technology
 - Operating voltage --> 1.8V
-- Operating frequency --> MHz
+- Operating frequency --> 50 MHz
 - Access time --> less than 30ns
 
 ## Tools used
@@ -44,13 +44,9 @@ The design process will involve extensive use of Electronic Design Automation (E
 ## Block Diagram
 
 <p align="center">
-  <img src="/Images/Block_diagram_of_SRAM.png">
-   Fig.1: Block diagram of a typical IoT sensor node
-</p>
 
-<img style="display: block; margin: auto;" src="/Images/Block_diagram_of_SRAM.png">
-<p style="text-align: center;">
-   This is an image
+  <img src="/Images/Block_diagram_of_SRAM.png">
+   Fig.1: Block diagram of a typical IoT sensor node 
 </p>
 
 ![](https://github.com/Shruti-Mahato/SRAM/assets/119694274/0e221302-84e5-4571-99f1-8d4fadbe139c)
