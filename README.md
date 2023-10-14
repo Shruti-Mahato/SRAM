@@ -20,7 +20,8 @@ Design and Implementation of 16-Byte SRAM in 0.18μm CMOS Technology for low pow
    - [Data driver](#data-driver)
 - [Working of SRAM](#working-of-sram)
 - [Static Noise Margin](#static-noise-margin)
-
+- [Top level Schematic](#top-level-schematic)
+- 
 ## Introduction
 The primary objective of this project is to design a 16-byte SRAM with optimal performance and minimal power consumption in a 0.18μm CMOS process.
 - Cell Design: Design of SRAM memory cells that offer fast access times and ensuring high-speed data retrieval while minimizing power consumption.
@@ -43,11 +44,7 @@ The design process will involve extensive use of Electronic Design Automation (E
 
 ## Block Diagram
 
-| <img src="./Images/Block_diagram_of_SRAM.png"> |
-| :---: |
-| Fig.1: Block diagram of a typical SRAM |
-
-| <img src="https://github.com/Shruti-Mahato/SRAM/blob/main/Images/Block_diagram_of_SRAM.png"> |
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/c699e559-ece2-4876-b35a-cf8f3016cf9f) |
 | :---: |
 | Fig.1: Block diagram of a typical SRAM |
 
@@ -58,29 +55,18 @@ The complete SRAM design contains a 6-transistor (6T) SRAM cell, a pre-charge ci
 - Each SRAM cell consists of two cross-coupled inverters (also known as a bistable circuit) and additional access transistors for read and write operations. These inverters form a latch, which can hold data in a stable state without the need for periodic refreshing (unlike DRAM).
 - It's a back-to-back inverter (M1, M2, M5, M6) to store data indefinitely if power is provided to the cell. The access transistors (M3, M4) are used to read and write data into the SRAM cell. 
 
-| <img src="/Images/png"> |
+| ![6t-Page-1 drawio (1)](https://github.com/Shruti-Mahato/SRAM/assets/119694274/83556903-db58-4dc7-b617-117f56b3a1db) |
 | :---: |
 | Fig.2: 6T SRAM Cell |
-
-![6t-Page-1 drawio (1)](https://github.com/Shruti-Mahato/SRAM/assets/119694274/83556903-db58-4dc7-b617-117f56b3a1db)
-<p align="center">
-  Fig.2: 6T SRAM Cell
-</p>
-
 
 ### Sizing of 6T 
 The core of the SRAM is a memory cell that stores one bit of information. Each cell’s area and power are critical since it decides the area of the entire chip.
 The sizing of the devices is decided by three main factors: the area of the cell, stored data in the memory cells is not corrupted while reading it, and able to overwrite the stored data during write operation. 
 Assuming the SRAM is storing 0 at Q node. Before the read operation, both the bitlines are precharged to vdd. After the access transistors are turned on, the node voltage of V1 will start increasing as the C is discharging through M3 and M1. It should not be more than the Vth of M2 otherwise the stored data will get corrupted.
 
-| <img src="/Images/Schematic_6T"> |
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/48cde1ca-b8b2-4220-a576-8181e203b4c1) |
 | :---: |
 | Fig.3: Read opeartion |
-
-![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/48cde1ca-b8b2-4220-a576-8181e203b4c1)
-<p align="center">
-  Fig.3: Read opeartion
-</p>
 
 Therefore,&emsp; $V1 \leq Vth(M2)------(1)$  
 By taking $V_1 = 0.3$, We can find that M3 operates in saturation while M1 operates in the linear region. So the current equation for both the transistor is as follows-
@@ -105,15 +91,9 @@ It can be shown that M1 needs to be stronger than M3 for correct read operation.
 Similarly we can calculate the size for M5 transistor during write operation.
 Now, consider the write "0" operation, assuming that a logic "1" is stored in the SRAM cell initially. The voltage levels in the CMOS SRAM cell at the beginning of the data-write operation is shown in the below figure. The transistors MI and M6 are turned off, while the transistors M2 and M5 operate in the linear mode. Thus, the internal node voltages are V1 = vdd and V2 = 0 before the cell access (or pass) transistors M3 and M4 are turned on. 
 
-| <img src="/Images/Schematic_6T"> |
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/bb7c4e52-8f90-4798-b414-b3986ec5964a) |
 | :---: |
-| Fig.3: Read opeartion |
-
-
-![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/bb7c4e52-8f90-4798-b414-b3986ec5964a)
-<p align="center">
-  Fig.4: Write Operation
-</p>
+| Fig.4: Write Operation |
 
 
 The column voltage $V_{c}$ is forced to logic "0" level by the write driver. Once the pass transistors M3 and M4 are turned on by the row decoder circuit, we expect that the node voltage V2 remains below the threshold voltage of M1, since M2 and M4 are designed according to condition (4). Consequently, the voltage level at node (2) would not be sufficient enough to turn on MI. To change the stored information, i.e., to force $V_{1}$ to 0 V and  $V_{2}$ to vdd, the node voltage $V_{1}$, must be reduced below the threshold voltage of M2, so that M2 turns off first. 
@@ -144,36 +124,25 @@ It can be shown that M3 needs to be stronger than M5 and, M1 needs to be stronge
 ### 2. Precharge Circuit
 Since the output bitlines (BL and BLB) of each 6T cell are shared by all the cells in a particular column, the parasitic capacitance on those nodes is very large making it impractical for the 6T cells to drive the bitlines to full CMOS voltage levels. Instead, both the bitlines are pre-charged to the same voltage, and a differential amplifier is used to sense the difference between the bitlines to read it. The nodes are also pre-charged before a write operation to reset a previous operation. Since the sensing mechanism is a differential operation, it is critical for both the bitlines to be equal in voltage for which one PMOS transistor can be used as equalizer which will maintain the same voltage level at both the sides.
 
-| <img src="/Images/precharge.png"> |
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/6384bac5-6423-4f24-a00f-68e389da0333) |
 | :---: |
 | Fig.5: Circuit diagram of precharge circuit |
-
-![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/6384bac5-6423-4f24-a00f-68e389da0333)
-<p align="center">
-  Fig.5: Circuit diagram of precharge circuit
-</p>
-
 
 > #### To view the schematic for Precharge Circuit, click [here](Images/precharge.png)
 
 ### Simulation results are given below -
-![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/b0737330-9c05-4a0f-a91b-e0ccba316665)
-<p align="center">
-  Fig.6: Timing diagram of precharge circuit
-</p>
 
-| <img src="/[Images/precharge.png"](https://github.com/Shruti-Mahato/SRAM/assets/119694274/b0737330-9c05-4a0f-a91b-e0ccba316665)> |
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/b0737330-9c05-4a0f-a91b-e0ccba316665) |
 | :---: |
-| Fig.5: Circuit diagram of precharge circuit |
+| Fig.6: Timing diagram of precharge circuit |
 
 
 ### 3. Row Decoder
 Here we are using a nand based 4:16 decoder to select a row from the sixteen rows in the SRAM array based on the input address bit configuration. The 4-bit address signals A[3:0] are used to activate the transistors in such a way that, any one of the outputs will be high. For example, if all the address bits are low (0000), then WL[0] output will be high and this will select the 0th row in the SRAM array. Similarly, if all the address bits are high (1111), WL[15] output line will be high and that will select the 15th row of the SRAM array.
 
-![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/17a8aee3-2461-472b-b8b4-30f05ff51cab)
-<p align="center">
-  Fig.7: Circuit diagram of Row Decoder
-</p>
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/17a8aee3-2461-472b-b8b4-30f05ff51cab) |
+| :---: |
+| Fig.7: Circuit diagram of Row Decoder |
 
 
 > #### To view the schematic for row decoder, click [here](Images/Schematic_Row_Decoder.png)
@@ -184,31 +153,30 @@ Here we are using a nand based 4:16 decoder to select a row from the sixteen row
 - Now, During the read operation if there is a small voltage difference between the bitlines ‘BL’ and ‘BLB’. Then, the Vgs for M2 or M3 will be effected which will leads to change in I flowing through that transistor (M2/M3). As M4 and M5 are in series with M2/M3 So the overall I will get affected on that path. Now to maintain the KCL, the sum of I from both the paths i.e., M2,M4 and M3,M5 should be equal to I of M1. So, this extra I will either charging the node C of I0, or discharging the C depending upon the read value.
 - Now, this small voltage difference is amplified by the sense amplifier and the buffer converts the output to rail-to-rail voltage levels (vdd to 0). The gain of the amplifier and the threshold of the buffer is designed very carefully to achieve this function.
 
-![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/e20217e6-78f0-47a7-899e-e3c207d07ad1)
-<p align="center">
-  Fig.8: Circuit diagram of Sense amplifier
-</p>
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/e20217e6-78f0-47a7-899e-e3c207d07ad1) |
+| :---: |
+| Fig.8: Circuit diagram of Sense amplifier |
 
 
 > #### To view the schematic for Sense Amplifier, click [here](Images/Schematic_Sense_Amplifier.png)
 
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/48124a12-fcf5-4877-8eb3-031dfa9b412a) |
+| :---: |
+| Fig.9: Gain of sense Amplifier |
 
 ### Simulation results are given below -
-![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/6be025d7-537e-4827-bca1-50286bf77a9d)
-<p align="center">
-  Fig.9: Timing diagram of Sense Amplifier
-</p>
 
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/6be025d7-537e-4827-bca1-50286bf77a9d) |
+| :---: |
+| Fig.9: Timing diagram of Sense Amplifier |
 
 ### 5. Data Driver
 The circuit that is responsible for correct writing of data into the memory cell is called the write/data driver. A possible implementation of the write driver is shown in the below figure. The write operation starts with the precharge circuit that precharges both bit-lines (i.e., Bl and BLB). Then after the precharge, access transistor should be ON for writing the given data. data is connected to BL for writing at Q Node. Similarly, datab is connected to BLB, for writing at QB node.
 > Note that the data should be stable before the writing process. So, we should give the data before the WL signal became HIGH for which enables the access transistor to overwrite the stored data.
 
-![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/a7fb7dce-c3c5-40e8-b63a-27939f529942)
-<p align="center">
-  Fig.10: Circuit diagram of Write driver
-</p>
-
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/a7fb7dce-c3c5-40e8-b63a-27939f529942) |
+| :---: |
+|  Fig.10: Circuit diagram of Write driver |
 
 > #### To view the schematic for Write Driver, click [here](Images/data_driver.png)
 
@@ -216,35 +184,28 @@ The circuit that is responsible for correct writing of data into the memory cell
 ### Read Operation
 - Let's assume initially the 6T cell is containing 0. Then the effective circuit will be like as the image shown below (considering the bit lines are precharged to Vdd). Here, M2 and M5 are turned off. The internal node voltages are V1 = 0 and V2 = vdd before the access transistors M3 and M4 are turned on.
   
-![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/48cde1ca-b8b2-4220-a576-8181e203b4c1)
-<p align="center">
-  Fig.11: Read operation in SRAM
-</p>
-
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/48cde1ca-b8b2-4220-a576-8181e203b4c1) |
+| :---: |
+| Fig.11: Read operation in SRAM |
 
 - When M3 and M4 turned on by the row selection circuitry, the voltage level of column C will not show any significant variation since no current will flow through M4. On the other half of the cell, however, M3 and M1 will con-duct a nonzero current and the voltage level of column C will begin to drop slightly. While M1 and M3 are slowly discharging the column capacitance, the node voltage V₁ will increase from its initial value of 0 V.
 -  When M3 and M4 turned on then Vc will discharge thus varying V1 and now the change in voltage of BL will be sensed by sense amplifier and will be interpreted as 0.
 
-![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/6a55f4d8-7231-4385-8b88-f0f622d4fbd9)
-<p align="center">
-  Fig.12: Timing diagram of read operation
-</p>
-
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/6a55f4d8-7231-4385-8b88-f0f622d4fbd9) |
+| :---: |
+| Fig.12: Timing diagram of read operation |
 
 
 ### Write Operation
 Now let's consider initially the circuit was containing 1 and we want to modify the content to 0.Now for the cell containing 1 effective circuit will be like :Now to write 0 into it we forced the bit line to 0 by writing circuitory.But to modify the content V1 should be =0 As we designed circuit such in a way V2 can't go above Vtn so we have to force V1 > Vtn so that M2 will turn off.
 
-![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/bb7c4e52-8f90-4798-b414-b3986ec5964a)
-<p align="center">
-  Fig.13: Circuit diagram of write operation
-</p>
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/bb7c4e52-8f90-4798-b414-b3986ec5964a) |
+| :---: |
+| Fig.13: Circuit diagram of write operation |
 
-![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/6b8614f6-0f81-402c-89f4-88fb1ee535ea)
-<p align="center">
-  Fig.14: Timing diagram of write operation
-</p>
-
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/6b8614f6-0f81-402c-89f4-88fb1ee535ea) |
+| :---: |
+| Fig.14: Timing diagram of write operation |
 
 ## Static Noise Margin
 **Static Noise Margin (SNM)** is a measure of tolerance of a static random-access memory (SRAM) cell. It's important for determining the stability and reliability of data storage in SRAM cells. An SNM of 6T SRAM is typically evaluated in terms of the read and write stability margins.  
@@ -252,16 +213,16 @@ Now let's consider initially the circuit was containing 1 and we want to modify 
 **Write Margin (Write SNM):** This measures how much noise or variability the SRAM cell can tolerate when you're trying to write data into it without causing unintended switching of the stored values.  
 In order to find the Static noise margin of SRAM cell, we used the butterfly curve which is a graphical representation of the SRAM cell's behavior. In this, we ﬁnd VTC of inverter 1 and inverter 2 of memory cell. The minimum side of largest square that can be ﬁxed within the lobes of the butterﬂy curve represent SNM of the SRAM bitcell.
 
-![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/aae0afa4-d3cc-492f-8e93-a8d446a000c4)
-<p align="center">
-  Fig.15: Butterfly curve</p>
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/aae0afa4-d3cc-492f-8e93-a8d446a000c4) |
+| :---: |
+| Fig.15: Butterfly curve</p> |
 
 ## Top level Schematic
 Creating a top-level schematic and testbench for a 6T SRAM cell in a 0.18μm CMOS technology node involves several steps. The key components are shown in the below schematic. The signal description are as follows -  
-![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/f2949d42-7833-4883-a3ba-a031e8817838)
-<p align="center">
-  Fig.16: Top level Schematic of SRAM
-</p>
+
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/f2949d42-7833-4883-a3ba-a031e8817838) |
+| :---: |
+|  Fig.16: Top level Schematic of SRAM |
 
 1. PC = To precharge the Bitlines
 2. WL = To enable the access transistor
@@ -285,6 +246,10 @@ Here, we are writing two data at two different address and then reading the data
 
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/8786472d-1e4a-4779-a2e2-cba29f414efe)
 
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/af7ded51-f674-469b-9020-3805b19b75bf) |
+| :---: |
+| Fig.12: Read Write operation |
+
 Output waveforms are given below- 
 
 ## Delay calculation :
@@ -293,10 +258,17 @@ Read 1 delay - Delay between the falling edge of ctrl signal and 90% of the risi
 Write Delay - Delay between the rising edge of ctrl signal and the internal node of SRAM(Q/QB) when data gets overwritten to 90-95%  
 Pre Charge Delay - Delay between the falling edge of PC and the 95% of rising edge of BL & BLB.
 
-<p align="center">
-   <img src="/Images/read_delay.png">
-  Fig.12: Timing diagram of read operation
-</p>
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/9c99a64d-5d98-4550-b23a-a20aa41bec59) |
+| :---: |
+| Fig.12: Read delay |
+
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/b00ed0fb-7351-42ae-bb9e-f22d38aa4c59)
+| :---: |
+| Fig.12: Write delay |
+
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/dc832d40-46a5-4250-a56b-a1556ada4801) |
+| :---: |
+| Fig.12: Precharge delay |
 
 ### 2. Corner Simulation : 
 To test the SRAM cell under different corner cases (e.g., process, voltage, temperature) to ensure the robustness.
@@ -307,5 +279,7 @@ PreCharge signal ON time
 
 Write Signal ON time
 Take maximum delay of Write delay from all the process corner and set the Write signal ON time by that (amount+20%)
+
+file:///home/nfs2/vlab24/Pictures/corner_analysis_15_9_5_15.png![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/023d331d-366c-4248-86c8-106a73023565)
 
 
