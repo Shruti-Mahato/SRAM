@@ -252,8 +252,6 @@ Create transient analysis simulations for read and write operations. For example
 Here, we are writing two data at two different address and then reading the data from the corresponding address line.   
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/c8170075-c4d0-4d15-a488-f817827e47ab)
 
-
-
 Output waveforms are given below- 
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/af7ded51-f674-469b-9020-3805b19b75bf) |
 | :---: |
