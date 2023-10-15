@@ -263,30 +263,27 @@ Read 1 delay - Delay between the falling edge of ctrl signal and 90% of the risi
 
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/9c99a64d-5d98-4550-b23a-a20aa41bec59) |
 | :---: |
-| Fig.12: Read delay |
+| Fig.19: Read delay |
 
 Write Delay - Delay between the rising edge of ctrl signal and the internal node of SRAM(Q/QB) when data gets overwritten to 90-95%
 
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/b00ed0fb-7351-42ae-bb9e-f22d38aa4c59)
 | :---: |
-| Fig.12: Write delay |
+| Fig.20: Write delay |
 
 Pre Charge Delay - Delay between the falling edge of PC and the 95% of rising edge of BL & BLB.
 
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/dc832d40-46a5-4250-a56b-a1556ada4801) |
 | :---: |
-| Fig.12: Precharge delay |
+| Fig.21: Precharge delay |
 
 ### 2. Corner Simulation : 
 To test the SRAM cell under different corner cases (e.g., process, voltage, temperature) to ensure the robustness.
 
-For finding out the maximum operating frequency for the SRAM:
-PreCharge signal ON time
-   Take the maximum delay from all the process corner (for both 1 -> 0 and 0 -> 1) and increase the Precharge ON time by that (amount+20%)
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/e70e8dff-16a2-4803-9f5f-57846774b705) |
+| :---: |
+| Fig.22: Delay calculation in differnet PVT cornrers |
 
-Write Signal ON time
-Take maximum delay of Write delay from all the process corner and set the Write signal ON time by that (amount+20%)
+In figure-22, highlighted values in yellow indicates the minimum value for respective delays wheareas red indicates the maximum for that delay.
 
-file:///home/nfs2/vlab24/Pictures/corner_analysis_15_9_5_15.png![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/023d331d-366c-4248-86c8-106a73023565)
-
-
+![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/023d331d-366c-4248-86c8-106a73023565)
