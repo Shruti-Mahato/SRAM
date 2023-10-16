@@ -20,9 +20,8 @@ Design and Implementation of 16-Byte SRAM in 0.18μm CMOS Technology for low pow
    - [Data driver](#data-driver)
 - [Working of SRAM](#working-of-sram)
 - [Static Noise Margin](#static-noise-margin)
-- [Top level Schematic](#top-level-schematic)
-- [Testbench](testbench)
-  
+- [Top level Schematic and Testbench](#top-level-schematic-and-testbench)
+
 ## Introduction
 The primary objective of this project is to design a 16-byte SRAM with optimal performance and minimal power consumption in a 0.18μm CMOS process.
 - Cell Design: Design of SRAM memory cells that offer fast access times and ensuring high-speed data retrieval while minimizing power consumption.
@@ -226,10 +225,10 @@ In order to find the Static noise margin of SRAM cell, we used the butterfly cur
 | :---: |
 | Fig.16: Butterfly curve</p> |
 
-## Top level Schematic
+## Top level Schematic and Testbench
 Creating a top-level schematic and testbench for a 6T SRAM cell in a 0.18μm CMOS technology node involves several steps.The key components are shown in Figure 17 which is a top-level schematic of SRAM.
 
-| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/f2949d42-7833-4883-a3ba-a031e8817838) |
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/f2611dfd-4a85-430e-8156-324ddb7496f1) |
 | :---: |
 |  Fig.17: Top level Schematic of SRAM |
 
@@ -241,7 +240,11 @@ The signal descriptions are as follows -
 5. sa = To enable the Sense amplifier
 6. idc = supply current from BGR
 
-## Testbench
+The final tesbench for SRAM is shown in figure 18.
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/71b53346-ca56-40bf-ac05-769cc14b8fd7) |
+| :---: |
+|  Fig.18: Testbench for SRAM-top |
+
 
 ### 1. Transient Analysis : 
 Create transient analysis simulations for read and write operations. For example:
@@ -256,7 +259,7 @@ Output waveforms are given below-
 | :---: |
 | Fig.18: Read Write operation |
 
-## Delay calculation :
+### Delay calculation :
 **Read 0 delay** - Delay between the rising edge of ctrl signal and 90% of the falling edge of the output.  
 **Read 1 delay** - Delay between the falling edge of ctrl signal and 90% of the rising edge of the output.  
 
