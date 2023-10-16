@@ -30,7 +30,7 @@ The primary objective of this project is to design a 16-byte SRAM with optimal p
 
 ## Specification
 - Memory Size --> 16x8-bit (16-byte)
-- Technology used --> 0.18um CMOS Technology
+- Technology used --> 0.18μm CMOS Technology
 - Operating voltage --> 1.8V
 - Operating frequency --> 50 MHz
 
@@ -43,6 +43,7 @@ The design process will involve extensive use of Electronic Design Automation (E
 
 ## Block Diagram
 
+Here's a simplified block diagram of a SRAM, as shown in Figure 1.
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/c699e559-ece2-4876-b35a-cf8f3016cf9f) |
 | :---: |
 | Fig.1: Block diagram of a typical SRAM |
@@ -123,7 +124,7 @@ It can be shown that M3 needs to be stronger than M5 and, M1 needs to be stronge
 
 ### 2. Precharge Circuit
 Since the bitlines (BL and BLB) of each 6T cell are shared by all the cells in a particular column, the parasitic capacitance on those nodes is very large making it impractical for the 6T cells to drive the bitlines to full CMOS voltage levels. The precharge circuit helps to initialize the bitline and bitline bar (BL and BLB) to known logic levels usually high(In Pre-charge) and low(In Pre-discharge)) before a read or write operation.
-Here, We have coonnected the bitlines to power supply voltage (VDD) through a PMOS transistor."PMOS is preferred with respect to NMOS as it passes strong 1. Both the bitlines are pre-charged to the same voltage (vdd in this case), and a differential amplifier is used to sense the difference between the bitlines to read it. The nodes are also pre-charged before a write operation to reset a previous operation. Since the sensing mechanism is a differential operation, it is critical for both the bitlines to be equal in voltage for which one PMOS transistor can be used as equalizer which will maintain the same voltage level at both the sides.
+Here, We have coonnected the bitlines to power supply voltage (VDD) through a PMOS transistor. **PMOS** is preferred with respect to **NMOS** as it passes strong 1. Both the bitlines are pre-charged to the same voltage (vdd in this case), and a differential amplifier is used to sense the difference between the bitlines to read it. The nodes are also pre-charged before a write operation to reset a previous operation. Since the sensing mechanism is a differential operation, it is critical for both the bitlines to be equal in voltage for which one PMOS transistor can be used as equalizer which will maintain the same voltage level at both the sides.
 
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/6384bac5-6423-4f24-a00f-68e389da0333) |
 | :---: |
@@ -137,7 +138,7 @@ Here, We have coonnected the bitlines to power supply voltage (VDD) through a PM
 | :---: |
 | Fig.6: Timing diagram of precharge circuit |
 
-In Figure 6, we can see that when PC is low, BL and BLB are charged up to vdd. After precharge BL and BLB voltage will drop as per the stored value.
+In Figure 6, we can see that when PC is low, BL and BLB are charged up to vdd. After precharge BL and BLB voltage will drop as per the stored value in SRAM.
 
 
 ### 3. Row Decoder
@@ -158,28 +159,28 @@ Here we are using a nand based 4:16 decoder (Figure 7) to select a row from the 
 
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/e20217e6-78f0-47a7-899e-e3c207d07ad1) |
 | :---: |
-| Fig.8: Circuit diagram of Sense amplifier |
+| Fig.8: Circuit diagram of Sense Amplifier |
 
 > #### To view the schematic for Sense Amplifier, click [here](Images/Schematic_Sense_Amplifier.png)
 
 The gain of a sense amplifier in an SRAM (Static Random-Access Memory) is typically characterized by the ratio of the output voltage swing to the input voltage difference.
-The sense amplifier is a crucial component in the read operation of an SRAM cell. The sense amplifier's gain directly impacts the read stability and speed of the SRAM cell. The higher the gain, the more quickly it can detect and amplify the small voltage difference between the bitlines (BL and BLB) when reading data from the SRAM cell. This results in a faster read operation because it reaches the decision point (logic high or low) more rapidly, reducing the read access time. In this case, the gain is around 30dB which can be seen in figure 9.
+The sense amplifier is a crucial component in the read operation of an SRAM cell. Therefore it's gain directly impacts the read stability and speed of the SRAM cell. The higher the gain, the more quickly it can detect and amplify the small voltage difference between the bitlines (BL and BLB) when reading data from the SRAM cell. This results in a faster read operation because it reaches the decision point (logic high or low) more rapidly, reducing the read access time. In this case, the gain is around 30dB, as shown in Figure 9.
 
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/48124a12-fcf5-4877-8eb3-031dfa9b412a) |
 | :---: |
-| Fig.9: Gain of sense Amplifier |
+| Fig.9: Gain of Sense Amplifier |
 
-### Simulation results are given below -
+**Simulation results are given below -**
 
 Initially both BL and BLB starts at 1.8V which shows the Precharge state. Now, BLB begins to discharge from 1.8V to 1.6V which indicates that logic 1 is stored in SRAM cell. This small voltage drop detects by sense amplifier and the output voltage is shown as 1.
-Again both the bitlines are given as vdd for some duration and Now, the voltage at BL starts decreasing which indicates that logic 0 is stored in the cell. The sense amplifier will amplify this difference and gives a output as strong logic 0, as can be seen in figure 10.
+Again both the bitlines are precharged for some duration and Now, the voltage at BL starts decreasing which indicates that logic 0 is stored in the cell. The sense amplifier will amplify this difference and gives a output as strong logic 0, as can be seen in figure 10.
 
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/6be025d7-537e-4827-bca1-50286bf77a9d) |
 | :---: |
 | Fig.10: Timing diagram of Sense Amplifier |
 
 ### 5. Data Driver
-The circuit that is responsible for correct writing of data into the memory cell is called the write/data driver. A possible implementation of the write driver is shown in the figure 11. The write operation starts with the precharge circuit that precharges both bit-lines (i.e., BL and BLB). Then after the precharge, access transistor should be ON for writing the given data. data is connected to BL for writing at Q Node. Similarly, datab is connected to BLB, for writing at QB node.
+The circuit that is responsible for correct writing of data into the memory cell is called the write/data driver. A possible implementation of the write driver is shown in the Figure 11. The write operation starts with the precharge circuit that precharges both bit-lines (i.e., BL and BLB). Then after the precharge, access transistor should be ON for writing the given data. data is connected to BL for writing at Q Node. Similarly, datab is connected to BLB, for writing at QB node.
 > Note that the data should be stable before the writing process. So, we should give the data before the WL signal became HIGH, which enables the access transistor to overwrite the stored data.
 
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/a7fb7dce-c3c5-40e8-b63a-27939f529942) |
@@ -219,14 +220,14 @@ Now let's consider initially the circuit was containing 1 and we want to modify 
 **Static Noise Margin (SNM)** is a measure of tolerance of a static random-access memory (SRAM) cell. It's important for determining the stability and reliability of data storage in SRAM cells. An SNM of 6T SRAM is typically evaluated in terms of the read and write stability margins.  
 **Read Margin (Read SNM):** This measures how much the SRAM cell can tolerate noise or variability in the data when you're trying to read it without making an incorrect decision.  
 **Write Margin (Write SNM):** This measures how much noise or variability the SRAM cell can tolerate when you're trying to write data into it without causing unintended switching of the stored values.  
-In order to find the Static noise margin of SRAM cell, we used the butterfly curve which is a graphical representation of the SRAM cell's behavior. In this, we ﬁnd VTC of inverter 1 and inverter 2 of memory cell. The minimum side of largest square that can be ﬁxed within the lobes of the butterﬂy curve represent SNM of the SRAM bitcell. In this case, the noise margin is around 0.704V
+In order to find the static noise margin of SRAM cell, we used the butterfly curve which is a graphical representation of the SRAM cell's behavior. In this, we ﬁnd VTC of inverter 1 and inverter 2 of memory cell. After getting the VTC of both inverters, we tried to plot both the VTC in one single plot which which ultimately resulting in a butterfly curve. The minimum side of largest square that can be ﬁxed within the lobes of the butterﬂy curve represent SNM of the SRAM bitcell. In this case, the noise margin is around 0.704V
 
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/aae0afa4-d3cc-492f-8e93-a8d446a000c4) |
 | :---: |
 | Fig.16: Butterfly curve</p> |
 
 ## Top level Schematic and Testbench
-Creating a top-level schematic and testbench for a 6T SRAM cell in a 0.18μm CMOS technology node involves several steps.The key components are shown in Figure 17 which is a top-level schematic of SRAM.
+Creating a top-level schematic and testbench for SRAM in a 0.18μm CMOS technology node involves several steps. The key components are shown in Figure 17 which is a top-level schematic of SRAM.
 
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/f2611dfd-4a85-430e-8156-324ddb7496f1) |
 | :---: |
@@ -237,24 +238,24 @@ The signal descriptions are as follows -
 2. WL = Worldline signal to enable the access transistor
 3. ctrl = Indicate the control signal for read, write, hold operation
 4. rw = read-write signal. high for read, low for write operation
-5. sa = To enable the Sense amplifier
-6. idc = supply current from BGR
+5. sa = To enable the sense amplifier
+6. idc = supply current to sense amplifier from BGR
 
-The final tesbench for SRAM is shown in figure 18.
+The final tesbench for SRAM is shown in Figure 18 -
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/71b53346-ca56-40bf-ac05-769cc14b8fd7) |
 | :---: |
 |  Fig.18: Testbench for SRAM-top |
 
 
 ### 1. Transient Analysis : 
-Create transient analysis simulations for read and write operations. For example:
+To simulate SRAM for read and write operations. For example:
 - Write: Apply signals to write data (0 and 1) into the SRAM cell and observe the cell's response.
 - Read: Apply signals to read data from the SRAM cell and observe the cell's response.
      
 Here, we are writing data to two different addresses and then reading the data from the corresponding address lines.   
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/c8170075-c4d0-4d15-a488-f817827e47ab)
 
-Output waveforms are given below- 
+Output waveforms are given below - 
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/af7ded51-f674-469b-9020-3805b19b75bf) |
 | :---: |
 | Fig.19: Read Write operation |
