@@ -257,7 +257,7 @@ Here, we are writing data to two different addresses and then reading the data f
 Output waveforms are given below- 
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/af7ded51-f674-469b-9020-3805b19b75bf) |
 | :---: |
-| Fig.18: Read Write operation |
+| Fig.19: Read Write operation |
 
 ### Delay calculation :
 **Read 0 delay** - Delay between the rising edge of ctrl signal and 90% of the falling edge of the output.  
@@ -265,25 +265,25 @@ Output waveforms are given below-
 
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/9c99a64d-5d98-4550-b23a-a20aa41bec59) |
 | :---: |
-| Fig.19: Read delay |
+| Fig.20: Read delay |
 
 **Write Delay** - Delay between the rising edge of ctrl signal and the internal node of SRAM(Q/QB) when data gets overwritten to 90-95%
 
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/b00ed0fb-7351-42ae-bb9e-f22d38aa4c59)
 | :---: |
-| Fig.20: Write delay |
+| Fig.21: Write delay |
 
 **Pre-Charge Delay** - Delay between the falling edge of PC and the 95% of rising edge of BL & BLB.
 
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/dc832d40-46a5-4250-a56b-a1556ada4801) |
 | :---: |
-| Fig.21: Precharge delay |
+| Fig.22: Precharge delay |
 
 ### 2. Corner Simulation : 
 To test the SRAM cell under different corner cases (e.g., process, voltage, temperature) to ensure the robustness of SRAM.
 
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/e70e8dff-16a2-4803-9f5f-57846774b705) |
 | :---: |
-| Fig.22: Delay calculation in differnet PVT cornrers |
+| Fig.23: Delay calculation in differnet PVT cornrers |
 
-In figure 22,The highlighted values in yellow indicate the minimum values for their respective delays while the ones in red indicate the maximum values.
+In figure 23,The highlighted values in yellow indicate the minimum values for their respective delays while the ones in red indicate the maximum values.
