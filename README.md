@@ -1,6 +1,7 @@
 # Title
 Design and Implementation of 16-Byte SRAM in 0.18μm CMOS Technology for low power IoT application.
 
+## why precharge with nmos as access transistor is preferred over predischarge and pmos as access transistor ?
 # What is SRAM ?
 - SRAM, which stands for Static Random-Access Memory, is a type of computer memory that is used for storing data that needs to be accessed quickly and frequently by a computer's central processing unit (CPU).  SRAM is one of the two primary types of volatile memory used in computers, with the other being DRAM (Dynamic Random-Access Memory).
 - One of the important characteristics of SRAM is its stability. Once data is written into an SRAM cell, it remains there until it's explicitly overwritten. This is in contrast to DRAM, which requires periodic refreshing to maintain data integrity.
@@ -85,6 +86,7 @@ $$\frac{k_{n,3}}{2}(V_{DD} - V_1 - V_{T,n})^2 = \frac{k_{n,1}}{2}\left(2(V_{DD} 
 $$\frac{k_{n,3}}{k_{n,1}} = \frac{(W/L)3}{(W/L)1} \leq \frac{2(V_{DD} - V_{T,n})V_{1}-V_{1}^2}{(V_{DD} - V_1- V_{T,n})^2}------(3)$$
 
 By substituating the values as $V_{T,n}= 0.67V$ and $V_1 = 0.3V$, we get 
+$$\frac{(W/L)3}{(W/L)1} \leq \frac{2(1.8 - 0.67)0.3 - (0.3)^2}{(1.8 - 0.3- 0.67)^2}$$
 $$\frac{(W/L)3}{(W/L)1} \leq 0.85 ------(4)$$
 
 It can be shown that M1 needs to be stronger than M3 for correct read operation. To summarize, the transistor M2 will remain in cut-off during the read "0" operation if condition (4) is satisfied. Since the structure is symmetric, the same constraints apply for M4 and M2.
@@ -116,7 +118,9 @@ $$\frac{k_{p,5}}{k_{n,3}} \leq \frac{2(V_{DD} - V_{T,n})V_{1}-V_{1}^2}{(V_{DD} -
 $$\frac{(W/L)5}{(W/L)3} < \frac{\mu_n}{\mu_p} \cdot \frac{2(V_{DD} - V_{T,n})V_{1}-V_{1}^2}{(V_{DD} - V_{T,p})^2}$$
 
 By putting the values for $\frac{\mu_n}{\mu_p} = 5$ , $V_{T_p} = V_{T,n}= 0.67$ , $V_1 = 0.3$, we get  
-$$\\frac{(W/L)5}{(W/L)3} \leq 2.3 --------(7)$$ 
+$$\frac{(W/L)5}{(W/L)3} \leq 5\cdot \frac{2(1.8 - 0.67)0.3 -0.3^2}{(1.8 - 0.67)^2}$$
+
+$$\frac{(W/L)5}{(W/L)3} \leq 2.3 --------(7)$$
 
 To summarize, the transistor M2 will be forced into cut-off mode during the write "0" operation if condition (5) is satisfied. This will guarantee that MI turns on, and changing the stored information. Since the structure is symmetric, the same constraints apply for M4 and M6.  
 It can be shown that M3 needs to be stronger than M5 and, M1 needs to be stronger than M3. In this design, the 6T transistors were sized for minimum area.
@@ -139,7 +143,6 @@ Here, We have coonnected the bitlines to power supply voltage (VDD) through a PM
 | Fig.6: Timing diagram of precharge circuit |
 
 In Figure 6, we can see that when PC is low, BL and BLB are charged up to vdd. After precharge BL and BLB voltage will drop as per the stored value in SRAM.
-
 
 ### 3. Row Decoder
 Here we are using a nand based 4:16 decoder (Figure 7) to select a row from the sixteen rows in the SRAM array based on the input address bit configuration. The 4-bit address signals A[3:0] are used to activate the transistors in such a way that, any one of the outputs will be high. For example, if all the address bits are low (0000), then WL[0] output will be high and this will select the 0th row in the SRAM array. Similarly, if all the address bits are high (1111), WL[15] output line will be high and that will select the 15th row of the SRAM array.
