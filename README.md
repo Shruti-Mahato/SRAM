@@ -34,7 +34,6 @@ The primary objective of this project is to design a 16-byte SRAM with optimal p
 - Technology used --> 0.18um CMOS Technology
 - Operating voltage --> 1.8V
 - Operating frequency --> 50 MHz
-- Access time --> less than 30ns
 
 ## Tools used
 The design process will involve extensive use of Electronic Design Automation (EDA) tools for schematic, simulation, and layout design.
@@ -246,10 +245,10 @@ The signal descriptions are as follows -
 
 ### 1. Transient Analysis : 
 Create transient analysis simulations for read and write operations. For example:
-   - Write: Apply signals to write data (0 and 1) into the SRAM cell and observe the cell's response.
-   - Read: Apply signals to read data from the SRAM cell and observe the cell's response.
+- Write: Apply signals to write data (0 and 1) into the SRAM cell and observe the cell's response.
+- Read: Apply signals to read data from the SRAM cell and observe the cell's response.
      
-Here, we are writing two data at two different address and then reading the data from the corresponding address line.   
+Here, we are writing data to two different addresses and then reading the data from the corresponding address lines.   
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/c8170075-c4d0-4d15-a488-f817827e47ab)
 
 Output waveforms are given below- 
@@ -258,32 +257,30 @@ Output waveforms are given below-
 | Fig.18: Read Write operation |
 
 ## Delay calculation :
-Read 0 delay - Delay between the rising edge of ctrl signal and 90% of the falling edge of the output.  
-Read 1 delay - Delay between the falling edge of ctrl signal and 90% of the rising edge of the output.  
+**Read 0 delay** - Delay between the rising edge of ctrl signal and 90% of the falling edge of the output.  
+**Read 1 delay** - Delay between the falling edge of ctrl signal and 90% of the rising edge of the output.  
 
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/9c99a64d-5d98-4550-b23a-a20aa41bec59) |
 | :---: |
 | Fig.19: Read delay |
 
-Write Delay - Delay between the rising edge of ctrl signal and the internal node of SRAM(Q/QB) when data gets overwritten to 90-95%
+**Write Delay** - Delay between the rising edge of ctrl signal and the internal node of SRAM(Q/QB) when data gets overwritten to 90-95%
 
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/b00ed0fb-7351-42ae-bb9e-f22d38aa4c59)
 | :---: |
 | Fig.20: Write delay |
 
-Pre Charge Delay - Delay between the falling edge of PC and the 95% of rising edge of BL & BLB.
+**Pre-Charge Delay** - Delay between the falling edge of PC and the 95% of rising edge of BL & BLB.
 
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/dc832d40-46a5-4250-a56b-a1556ada4801) |
 | :---: |
 | Fig.21: Precharge delay |
 
 ### 2. Corner Simulation : 
-To test the SRAM cell under different corner cases (e.g., process, voltage, temperature) to ensure the robustness.
+To test the SRAM cell under different corner cases (e.g., process, voltage, temperature) to ensure the robustness of SRAM.
 
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/e70e8dff-16a2-4803-9f5f-57846774b705) |
 | :---: |
 | Fig.22: Delay calculation in differnet PVT cornrers |
 
-In figure-22, highlighted values in yellow indicates the minimum value for respective delays wheareas red indicates the maximum for that delay.
-
-![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/023d331d-366c-4248-86c8-106a73023565)
+In figure 22,The highlighted values in yellow indicate the minimum values for their respective delays while the ones in red indicate the maximum values.
