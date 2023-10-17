@@ -134,7 +134,7 @@ Here, We have coonnected the bitlines to power supply voltage (VDD) through a PM
 | :---: |
 | Fig.5: Circuit diagram of precharge circuit |
 
-> #### To view the schematic for Precharge Circuit, click [here](/Images/Schematic_precharge.png)
+> #### To view the schematic for Precharge Circuit, click [here](https://github.com/Shruti-Mahato/SRAM/blob/main/Images/Schematic_precharge.png)
 
 ### Simulation results are given below -
 
