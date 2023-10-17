@@ -1,7 +1,6 @@
 # Title
 Design and Implementation of 16-Byte SRAM in 0.18μm CMOS Technology for low power IoT application.
 
-## why precharge with nmos as access transistor is preferred over predischarge and pmos as access transistor ?
 # What is SRAM ?
 - SRAM, which stands for Static Random-Access Memory, is a type of computer memory that is used for storing data that needs to be accessed quickly and frequently by a computer's central processing unit (CPU).  SRAM is one of the two primary types of volatile memory used in computers, with the other being DRAM (Dynamic Random-Access Memory).
 - One of the important characteristics of SRAM is its stability. Once data is written into an SRAM cell, it remains there until it's explicitly overwritten. This is in contrast to DRAM, which requires periodic refreshing to maintain data integrity.
