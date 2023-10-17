@@ -133,7 +133,7 @@ Here, We have coonnected the bitlines to power supply voltage (VDD) through a PM
 | :---: |
 | Fig.5: Circuit diagram of precharge circuit |
 
-> #### To view the schematic for Precharge Circuit, click [here](Images/precharge.png)
+> #### To view the schematic for Precharge Circuit, click [here](Images/Schematic_precharge.png)
 
 ### Simulation results are given below -
 
@@ -151,7 +151,7 @@ Here we are using a nand based 4:16 decoder (Figure 7) to select a row from the 
 | Fig.7: Circuit diagram of Row Decoder |
 
 
-> #### To view the schematic for row decoder, click [here](Images/Schematic_Row_Decoder.png)
+> #### To view the schematic for row decoder, click [here](Images/Schematic_row_decoder.png)
 
 ### 4. Sense Amplifier
 - The sense amplifier is used to sense the voltage difference between the bitlines and amplify it to drive the digital circuits. There are different types of sense amplifiers which is used in the SRAM design depending upon the application. In this project, a differential based sense amplifier is implemented as shown in figure 8.
@@ -189,7 +189,7 @@ The circuit that is responsible for correct writing of data into the memory cell
 | :---: |
 |  Fig.11: Circuit diagram of Write driver |
 
-> #### To view the schematic for Write Driver, click [here](Images/data_driver.png)
+> #### To view the schematic for Write Driver, click [here](Images/Schematic_write_driver.png)
 
 ## Working of SRAM
 ### Read Operation
