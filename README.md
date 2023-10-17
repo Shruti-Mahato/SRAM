@@ -21,6 +21,7 @@ Design and Implementation of 16-Byte SRAM in 0.18μm CMOS Technology for low pow
 - [Working of SRAM](#working-of-sram)
 - [Static Noise Margin](#static-noise-margin)
 - [Top level Schematic and Testbench](#top-level-schematic-and-testbench)
+- [Conclusion](#conclusion)
 
 ## Introduction
 The primary objective of this project is to design a 16-byte SRAM with optimal performance and minimal power consumption in a 0.18μm CMOS process.
@@ -49,7 +50,7 @@ Here's a simplified block diagram of a SRAM, as shown in Figure 1.
 | Fig.1: Block diagram of a typical SRAM |
 
 ## Design Description
-The complete SRAM design contains a 6-transistor (6T) SRAM cell, a pre-charge circuit, a row decoder, a sense amplifier and a data driver. This section will discuss the design of the blocks and their simulation results.
+The complete SRAM design contains 6-transistor (6T) SRAM array, a pre-charge circuit, a row decoder, a sense amplifier and a data driver. This section will discuss the design of the blocks and their simulation results.
 
 ### 1. 6-Transistor (6T) CMOS SRAM Cell
 - Each SRAM cell consists of two cross-coupled inverters (also known as a bistable circuit) and additional access transistors for read and write operations. These inverters form a latch, which can hold data in a stable state without the need for periodic refreshing (unlike DRAM).
@@ -59,7 +60,7 @@ The complete SRAM design contains a 6-transistor (6T) SRAM cell, a pre-charge ci
 | :---: |
 | Fig.2: 6T SRAM Cell |
 
-### Sizing of 6T 
+### Design of 6T 
 The core of the SRAM is a memory cell that stores one bit of information. Each cell’s area and power are critical since it decides the area of the entire chip.
 The sizing of the devices is decided by three main factors: the area of the cell, stored data in the memory cells is not corrupted while reading it, and able to overwrite the stored data during write operation. 
 
@@ -133,7 +134,7 @@ Here, We have coonnected the bitlines to power supply voltage (VDD) through a PM
 | :---: |
 | Fig.5: Circuit diagram of precharge circuit |
 
-> #### To view the schematic for Precharge Circuit, click [here](Images/Schematic_precharge.png)
+> #### To view the schematic for Precharge Circuit, click [here](/Images/Schematic_precharge.png)
 
 ### Simulation results are given below -
 
@@ -155,15 +156,15 @@ Here we are using a nand based 4:16 decoder (Figure 7) to select a row from the 
 
 ### 4. Sense Amplifier
 - The sense amplifier is used to sense the voltage difference between the bitlines and amplify it to drive the digital circuits. There are different types of sense amplifiers which is used in the SRAM design depending upon the application. In this project, a differential based sense amplifier is implemented as shown in figure 8.
-- Initially, during the precharge, the node voltage for BL and BLB is charged upto vdd, which is a input to the M2 and M3 transistor. Constant I is provided to the M0, which is in Saturation region and it behaves like a current mirror circuit. So, the same current will flow from M1. Similary we can see that M4 also acts as current mirror circuit. So, the same I will flow from M5. Therefore, we can say that the M1 current is equally divided into two paths beacause of the circuit symmetricity.
-- Now, During the read operation if there is a small voltage difference between the bitlines ‘BL’ and ‘BLB’. Then, the Vgs for M2 or M3 will be effected which will leads to change in I flowing through that transistor (M2/M3). As M4 and M5 are in series with M2/M3 So the overall I will get affected on that path. Now to maintain the KCL, the sum of I from both the paths i.e., M2,M4 and M3,M5 should be equal to I of M1. So, this extra I will either charging the node C of I0, or discharging the C depending upon the read value.
+- Initially, during the precharge, the node voltage for BL and BLB is charged upto vdd, which is a input to the M2 and M3 transistor. Constant current (I) is provided to the M0, which is in saturation region and it behaves like a current mirror circuit. So, the same current will flow from M1. Similary we can see that M4 also acts as current mirror circuit. So, the same current will flow from M5. Therefore, we can say that the M1 current is equally divided into two paths beacause of the circuit symmetricity.
+- Now, During the read operation if there is a small voltage difference between the bitlines ‘BL’ and ‘BLB’. Then, the Vgs for M2 or M3 will be effected which will leads to change in current flowing through that transistor (M2/M3). As M4 and M5 are in series with M2/M3 So the overall current will get affected on that path. Now to maintain the KCL, the sum of current from both the paths i.e., M2,M4 and M3,M5 should be equal to the current of M1. So, this extra I will either charging the node C of I0, or discharging the C depending upon the read value.
 - Now, this small voltage difference is amplified by the sense amplifier and the buffer converts the output to rail-to-rail voltage levels (vdd to 0). The gain of the amplifier and the threshold of the buffer is designed very carefully to achieve this function.
 
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/e20217e6-78f0-47a7-899e-e3c207d07ad1) |
 | :---: |
 | Fig.8: Circuit diagram of Sense Amplifier |
 
-> #### To view the schematic for Sense Amplifier, click [here](Images/Schematic_Sense_Amplifier.png)
+> #### To view the schematic for Sense Amplifier, click [here](/Images/Schematic_Sense_Amplifier.png)
 
 The gain of a sense amplifier in an SRAM (Static Random-Access Memory) is typically characterized by the ratio of the output voltage swing to the input voltage difference.
 The sense amplifier is a crucial component in the read operation of an SRAM cell. Therefore it's gain directly impacts the read stability and speed of the SRAM cell. The higher the gain, the more quickly it can detect and amplify the small voltage difference between the bitlines (BL and BLB) when reading data from the SRAM cell. This results in a faster read operation because it reaches the decision point (logic high or low) more rapidly, reducing the read access time. In this case, the gain is around 30dB, as shown in Figure 9.
@@ -189,7 +190,7 @@ The circuit that is responsible for correct writing of data into the memory cell
 | :---: |
 |  Fig.11: Circuit diagram of Write driver |
 
-> #### To view the schematic for Write Driver, click [here](Images/Schematic_write_driver.png)
+> #### To view the schematic for Write Driver, click [here](/Images/Schematic_write_driver.png)
 
 ## Working of SRAM
 ### Read Operation
