@@ -138,7 +138,7 @@ Here, We have coonnected the bitlines to power supply voltage (VDD) through a PM
 
 ### Simulation results are given below -
 
-| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/b0737330-9c05-4a0f-a91b-e0ccba316665) |
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/06c6e61d-08c2-4066-81f6-04fc440b02e2) |
 | :---: |
 | Fig.6: Timing diagram of precharge circuit |
 
@@ -152,10 +152,10 @@ Here we are using a nand based 4:16 decoder (Figure 7) to select a row from the 
 | Fig.7: Circuit diagram of Row Decoder |
 
 
-> #### To view the schematic for row decoder, click [here](Images/Schematic_row_decoder.png)
+> #### To view the schematic for row decoder, click [here](https://github.com/Shruti-Mahato/SRAM/blob/main/Images/Schematic_row_decoder.png)
 
 ### 4. Sense Amplifier
-- The sense amplifier is used to sense the voltage difference between the bitlines and amplify it to drive the digital circuits. There are different types of sense amplifiers which is used in the SRAM design depending upon the application. In this project, a differential based sense amplifier is implemented as shown in figure 8.
+- The sense amplifier is used to sense the voltage difference between the bitlines and amplify it to drive the digital circuits. There are different types of sense amplifiers which is used in the SRAM design depending upon the application. In this project, a differential based sense amplifier is implemented as shown in Figure 8.
 - Initially, during the precharge, the node voltage for BL and BLB is charged upto vdd, which is a input to the M2 and M3 transistor. Constant current (I) is provided to the M0, which is in saturation region and it behaves like a current mirror circuit. So, the same current will flow from M1. Similary we can see that M4 also acts as current mirror circuit. So, the same current will flow from M5. Therefore, we can say that the M1 current is equally divided into two paths beacause of the circuit symmetricity.
 - Now, During the read operation if there is a small voltage difference between the bitlines ‘BL’ and ‘BLB’. Then, the Vgs for M2 or M3 will be effected which will leads to change in current flowing through that transistor (M2/M3). As M4 and M5 are in series with M2/M3 So the overall current will get affected on that path. Now to maintain the KCL, the sum of current from both the paths i.e., M2,M4 and M3,M5 should be equal to the current of M1. So, this extra I will either charging the node C of I0, or discharging the C depending upon the read value.
 - Now, this small voltage difference is amplified by the sense amplifier and the buffer converts the output to rail-to-rail voltage levels (vdd to 0). The gain of the amplifier and the threshold of the buffer is designed very carefully to achieve this function.
@@ -164,7 +164,7 @@ Here we are using a nand based 4:16 decoder (Figure 7) to select a row from the 
 | :---: |
 | Fig.8: Circuit diagram of Sense Amplifier |
 
-> #### To view the schematic for Sense Amplifier, click [here](/Images/Schematic_Sense_Amplifier.png)
+> #### To view the schematic for Sense Amplifier, click [here](https://github.com/Shruti-Mahato/SRAM/blob/main/Images/Schematic_Sense_Amplifier.png)
 
 The gain of a sense amplifier in an SRAM (Static Random-Access Memory) is typically characterized by the ratio of the output voltage swing to the input voltage difference.
 The sense amplifier is a crucial component in the read operation of an SRAM cell. Therefore it's gain directly impacts the read stability and speed of the SRAM cell. The higher the gain, the more quickly it can detect and amplify the small voltage difference between the bitlines (BL and BLB) when reading data from the SRAM cell. This results in a faster read operation because it reaches the decision point (logic high or low) more rapidly, reducing the read access time. In this case, the gain is around 30dB, as shown in Figure 9.
@@ -190,7 +190,7 @@ The circuit that is responsible for correct writing of data into the memory cell
 | :---: |
 |  Fig.11: Circuit diagram of Write driver |
 
-> #### To view the schematic for Write Driver, click [here](/Images/Schematic_write_driver.png)
+> #### To view the schematic for Write Driver, click [here](https://github.com/Shruti-Mahato/SRAM/blob/main/Images/Schematic_write_driver.png)
 
 ## Working of SRAM
 ### Read Operation
@@ -203,7 +203,7 @@ The circuit that is responsible for correct writing of data into the memory cell
 - When M3 and M4 turned on by the row selection circuitry, the voltage level of column C will not show any significant variation since no current will flow through M4. On the other half of the cell, however, M3 and M1 will con-duct a nonzero current and the voltage level of column C will begin to drop slightly. While M1 and M3 are slowly discharging the column capacitance, the node voltage V₁ will increase from its initial value of 0 V.
 -  When M3 and M4 turned on then Vc will discharge thus varying V1 and now the change in voltage of BL will be sensed by sense amplifier and will be interpreted as 0.
 
-| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/6a55f4d8-7231-4385-8b88-f0f622d4fbd9) |
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/ff62df94-abf9-45f1-bf0b-dc40b6bb5b45) |
 | :---: |
 | Fig.13: Timing diagram of read operation |
 
@@ -215,7 +215,9 @@ Now let's consider initially the circuit was containing 1 and we want to modify 
 | :---: |
 | Fig.14: Circuit diagram of write operation |
 
-| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/6b8614f6-0f81-402c-89f4-88fb1ee535ea) |
+Here, we can see during the precharge both the bitlines are charged upto vdd
+
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/5a641fd2-87a4-4867-88bc-7ef6946d4173) |
 | :---: |
 | Fig.15: Timing diagram of write operation |
 
@@ -264,16 +266,20 @@ Output waveforms are given below -
 | Fig.19: Read Write operation |
 
 ### Delay calculation :
-**Read 0 delay** - Delay between the rising edge of ctrl signal and 90% of the falling edge of the output.  
-**Read 1 delay** - Delay between the falling edge of ctrl signal and 90% of the rising edge of the output.  
+**Read 0 delay** - Delay between 50% of the rising edge of ctrl signal and 50% of the falling edge of the output.  
+**Read 1 delay** - Delay between 50% of the rising edge of ctrl signal and 50% of the rising edge of the output.  
 
-| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/9c99a64d-5d98-4550-b23a-a20aa41bec59) |
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/f21c4683-aa77-4432-a382-94397ce1d043) |
 | :---: |
-| Fig.20: Read delay |
+| Fig.20: Read 0-1 delay |
+
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/ffc8470b-cf80-46dd-a9ce-b2ce5baa81a3) |
+| :---: |
+| Fig.20: Read 1-0 delay |
 
 **Write Delay** - Delay between the rising edge of ctrl signal and the internal node of SRAM(Q/QB) when data gets overwritten to 90-95%
 
-| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/b00ed0fb-7351-42ae-bb9e-f22d38aa4c59)
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/b00ed0fb-7351-42ae-bb9e-f22d38aa4c59) |
 | :---: |
 | Fig.21: Write delay |
 
@@ -286,8 +292,18 @@ Output waveforms are given below -
 ### 2. Corner Simulation : 
 To test the SRAM cell under different corner cases (e.g., process, voltage, temperature) to ensure the robustness of SRAM.
 
+![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/2e3facb7-6123-4dcb-a9cf-3d92c8f1e93a)
+
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/e70e8dff-16a2-4803-9f5f-57846774b705) |
 | :---: |
 | Fig.23: Delay calculation in differnet PVT cornrers |
 
-In figure 23,The highlighted values in yellow indicate the minimum values for their respective delays while the ones in red indicate the maximum values.
+In figure 23,The highlighted values in yellow indicate the best case for their respective delays while the ones in red indicate the worst case.
+
+## Conclusion
+
+In this project, a 16-byte SRAM was designed using 0.18μm CMOS technology. The maximum operating frequency for this case is 50MHz, and the maximum power consumption is within 450uW (447.31uW). Since the SRAM size is 16x8, no column decoder is required, which is simplifying the design. Instead, only a row decoder is needed to select from the 16 rows of address lines.
+
+We implemented a differential-based sense amplifier, which efficiently senses the difference between the bitlines, resulting in faster read operations compared to other sense amplifiers. In the best-case scenario, the write delay is 351.7p, and in the worst-case scenario, it is 649.5p. For precharge, the best-case delay is 397.1p, and the worst-case delay is 653.3p. During read operations, the best-case delay is 1.88ns, and the worst-case delay is 9.99ns.
+
+Overall, this SRAM project demonstrates an efficient and robust design that meets the specified performance requirements and design goals.
