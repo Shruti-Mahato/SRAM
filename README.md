@@ -56,7 +56,7 @@ The complete SRAM design contains 6-transistor (6T) SRAM array, a pre-charge cir
 - Each SRAM cell consists of two cross-coupled inverters (also known as a bistable circuit) and additional access transistors for read and write operations. These inverters form a latch, which can hold data in a stable state without the need for periodic refreshing (unlike DRAM).
 - It's a back-to-back inverter (M1, M2, M5, M6) to store data indefinitely if power is provided to the cell. The access transistors (M3, M4) are used to read and write data into the SRAM cell. 
 
-| ![6t-Page-1 drawio (1)](https://github.com/Shruti-Mahato/SRAM/assets/119694274/83556903-db58-4dc7-b617-117f56b3a1db) |
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/e4f8ac7f-0d99-41d1-be68-f3839f62bd8d) |
 | :---: |
 | Fig.2: 6T SRAM Cell |
 
@@ -211,7 +211,7 @@ The circuit that is responsible for correct writing of data into the memory cell
 ### Write Operation
 Now let's consider initially the circuit was containing 1 and we want to modify the content to 0.Now for the cell containing 1 effective circuit will be like :Now to write 0 into it we forced the bit line to 0 by writing circuitory.But to modify the content V1 should be =0 As we designed circuit such in a way V2 can't go above Vtn so we have to force V1 > Vtn so that M2 will turn off.
 
-| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/bb7c4e52-8f90-4798-b414-b3986ec5964a) |
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/09656957-0bd1-4426-af3b-221d6a6f44f5) |
 | :---: |
 | Fig.14: Circuit diagram of write operation |
 
@@ -293,6 +293,7 @@ Output waveforms are given below -
 To test the SRAM cell under different corner cases (e.g., process, voltage, temperature) to ensure the robustness of SRAM.
 
 ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/2e3facb7-6123-4dcb-a9cf-3d92c8f1e93a)
+![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/943f60f9-b191-4147-a27c-c5ac72cf101b)
 
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/e70e8dff-16a2-4803-9f5f-57846774b705) |
 | :---: |
