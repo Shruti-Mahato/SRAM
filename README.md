@@ -215,7 +215,7 @@ Now let's consider initially the circuit was containing 1 and we want to modify 
 | :---: |
 | Fig.14: Circuit diagram of write operation |
 
-Here, we can see during the precharge both the bitlines are charged upto vdd
+Here, we can see during the precharge both the bitlines are charged upto vdd, and then write enable signal is turned ON this gives the path for data to BL and data bar(datab) to BLB. data is stable before the access transistor gets on. after the access transisor gets on. the node voltage of sram Q or QB. 
 
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/5a641fd2-87a4-4867-88bc-7ef6946d4173) |
 | :---: |
@@ -293,10 +293,6 @@ Output waveforms are given below -
 To test the SRAM cell under different corner cases (e.g., process, voltage, temperature) to ensure the robustness of SRAM.
 
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/943f60f9-b191-4147-a27c-c5ac72cf101b) |
-| :---: |
-| Fig.23: Delay calculation in differnet PVT cornrers |
-
-| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/e70e8dff-16a2-4803-9f5f-57846774b705) |
 | :---: |
 | Fig.23: Delay calculation in differnet PVT cornrers |
 
