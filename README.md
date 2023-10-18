@@ -292,8 +292,9 @@ Output waveforms are given below -
 ### 2. Corner Simulation : 
 To test the SRAM cell under different corner cases (e.g., process, voltage, temperature) to ensure the robustness of SRAM.
 
-![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/2e3facb7-6123-4dcb-a9cf-3d92c8f1e93a)
-![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/943f60f9-b191-4147-a27c-c5ac72cf101b)
+| ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/943f60f9-b191-4147-a27c-c5ac72cf101b) |
+| :---: |
+| Fig.23: Delay calculation in differnet PVT cornrers |
 
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/e70e8dff-16a2-4803-9f5f-57846774b705) |
 | :---: |
