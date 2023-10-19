@@ -18,7 +18,7 @@ Design and Implementation of 16-Byte SRAM in 0.18μm CMOS Technology for low pow
    - [Row Decoder](#row-decoder)
    - [Sense Amplifier](#sense-amplifier)
    - [Data driver](#data-driver)
-- [Working of SRAM](#working-of-sram)
+- [Operation of SRAM](#operation-of-sram)
 - [Static Noise Margin](#static-noise-margin)
 - [Top level Schematic and Testbench](#top-level-schematic-and-testbench)
 - [Conclusion](#conclusion)
@@ -192,7 +192,7 @@ The circuit that is responsible for correct writing of data into the memory cell
 
 > #### To view the schematic for Write Driver, click [here](https://github.com/Shruti-Mahato/SRAM/blob/main/Images/Schematic_write_driver.png)
 
-## Working of SRAM
+## Operation of SRAM
 ### Read Operation
 - Let's assume initially the 6T cell is containing 0. Then the effective circuit is shown in Figure 12. (considering the bit lines are precharged to Vdd). Here, M2 and M5 are turned off. The internal node voltages are V1 = 0 and V2 = vdd before the access transistors M3 and M4 are turned on.
   
