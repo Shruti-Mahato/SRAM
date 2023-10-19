@@ -194,14 +194,14 @@ The circuit that is responsible for correct writing of data into the memory cell
 
 ## Working of SRAM
 ### Read Operation
-- Let's assume initially the 6T cell is containing 0. Then the effective circuit will be like as the image shown below (considering the bit lines are precharged to Vdd). Here, M2 and M5 are turned off. The internal node voltages are V1 = 0 and V2 = vdd before the access transistors M3 and M4 are turned on.
+- Let's assume initially the 6T cell is containing 0. Then the effective circuit is shown in Figure 12. (considering the bit lines are precharged to Vdd). Here, M2 and M5 are turned off. The internal node voltages are V1 = 0 and V2 = vdd before the access transistors M3 and M4 are turned on.
   
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/48cde1ca-b8b2-4220-a576-8181e203b4c1) |
 | :---: |
 | Fig.12: Read operation in SRAM |
 
-- When M3 and M4 turned on by the row selection circuitry, the voltage level of column C will not show any significant variation since no current will flow through M4. On the other half of the cell, however, M3 and M1 will con-duct a nonzero current and the voltage level of column C will begin to drop slightly. While M1 and M3 are slowly discharging the column capacitance, the node voltage V₁ will increase from its initial value of 0 V.
--  When M3 and M4 turned on then Vc will discharge thus varying V1 and now the change in voltage of BL will be sensed by sense amplifier and will be interpreted as 0.
+- When M3 and M4 turned on by the row selection circuitry, the voltage level of column C will not show any significant variation since no current will flow through M4. On the other half of the cell, however, M3 and M1 will conduct a nonzero current and the voltage level of column C will begin to drop slightly. While M1 and M3 are slowly discharging the column capacitance, the node voltage $V_1$ will increase from its initial value of 0 V.
+- When M3 and M4 turned on then the column capacitance will discharge thus varying the voltage at BL and this small change in voltage of BL will be sensed by sense amplifier and will be interpreted as 0.
 
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/ff62df94-abf9-45f1-bf0b-dc40b6bb5b45) |
 | :---: |
@@ -209,11 +209,17 @@ The circuit that is responsible for correct writing of data into the memory cell
 
 
 ### Write Operation
-Now let's consider initially the circuit was containing 1 and we want to modify the content to 0.Now for the cell containing 1 effective circuit will be like :Now to write 0 into it we forced the bit line to 0 by writing circuitory.But to modify the content V1 should be =0 As we designed circuit such in a way V2 can't go above Vtn so we have to force V1 > Vtn so that M2 will turn off.
+Now let's consider initially the circuit was containing 1 and we want to modify the content to 0. Now to write 0 into it we forced the bit line to 0 by writing circuitory.
 
 | ![image](https://github.com/Shruti-Mahato/SRAM/assets/119694274/09656957-0bd1-4426-af3b-221d6a6f44f5) |
 | :---: |
 | Fig.14: Circuit diagram of write operation |
+
+But to modify the content V1 should be 0. As we designed circuit such in a way V2 can't go above Vtn so we have to force V1 > Vtn so that M2 will turn off.
+
+Figure 14 shows the voltage levels in the CMOS SRAM cell at the beginning of the data-write operation. The transistors MI and M6 are turnedoff, while the transistors M2 and M5 operate in the linear mode. Thus, the internalnode voltages are V 1 =V DD and V_{2} = 0V before the cell access (or pass) transistorsM3 and M4 are turned on..
+
+The column voltage Ve is forced to logic "0" level by the data-write circuitry:thus, we may assume that V_{c} is approximately equal to 0 V. Once the pass transistorsM3 and M4 are turned on by the row selection circuitry, we expect that the node voltage V_{2} remains below the threshold voltage of M1, since M2 and M4 are designed ac-cording to condition (10.5). Consequently, the voltage level at node (2) would
 
 Here, we can see during the precharge both the bitlines are charged upto vdd, and then write enable signal is turned ON this gives the path for data to BL and data bar(datab) to BLB. data is stable before the access transistor gets on. after the access transisor gets on. the node voltage of sram Q or QB. 
 
@@ -300,7 +306,7 @@ In figure 23,The highlighted values in yellow indicate the best case for their r
 
 ## Conclusion
 
-In this project, a 16-byte SRAM was designed using 0.18μm CMOS technology. The maximum operating frequency for this case is 50MHz, and the maximum power consumption is within 450uW (447.31uW). Since the SRAM size is 16x8, no column decoder is required, which is simplifying the design. Instead, only a row decoder is needed to select from the 16 rows of address lines.
+In this project, a 16-byte SRAM was designed using 0.18μm CMOS technology. The maximum operating frequency for this case is 50MHz, and the maximum power consumption is within 700uW (699.86uW). Since the SRAM size is 16x8, no column decoder is required, which is simplifying the design. Instead, only a row decoder is needed to select from the 16 rows of address lines.
 
 We implemented a differential-based sense amplifier, which efficiently senses the difference between the bitlines, resulting in faster read operations compared to other sense amplifiers. In the best-case scenario, the write delay is 351.7p, and in the worst-case scenario, it is 649.5p. For precharge, the best-case delay is 397.1p, and the worst-case delay is 653.3p. During read operations, the best-case delay is 1.88ns, and the worst-case delay is 9.99ns.
 
