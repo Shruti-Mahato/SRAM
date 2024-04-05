@@ -305,7 +305,7 @@ To test the SRAM cell under different corner cases (e.g., process, voltage, temp
 
 In figure 23,The highlighted values in yellow indicate the best case for their respective delays while the ones in red indicate the worst case.
 ## Layout
-In this section, layouts for verious SRAM block is attached below. The SRAM layout refers to the physical arrangement of components within the memory cell, including transistors, capacitors, and interconnects. Each block is designed to meet the performance, power, and area requirements of the SRAM design. By examining these layouts, one can gain insights into the organization and structure of the SRAM design, it's analysis, optimization, and verification processes.
+In this section, layout for verious SRAM blocks is attached below. The SRAM layout refers to the physical arrangement of components within the memory cell, including transistors, capacitors, and interconnects. Each block is designed to meet the performance, power, and area requirements of the SRAM design. By examining these layouts, one can gain insights into the structure of the SRAM design, it's analysis, optimization, and verification processes.
 
 | ![image](https://github.com/Shruti-Mahato/SRAM/blob/main/Images/Layout_6t.png) |
 | :---: |
