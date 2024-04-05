@@ -304,6 +304,34 @@ To test the SRAM cell under different corner cases (e.g., process, voltage, temp
 | Fig.23: Delay calculation in differnet PVT cornrers |
 
 In figure 23,The highlighted values in yellow indicate the best case for their respective delays while the ones in red indicate the worst case.
+## Layout
+In this section, layout for differnt SRAM blocks is attached below -
+
+| ![image](https://github.com/Shruti-Mahato/SRAM/blob/main/Images/Layout_6t.png) |
+| :---: |
+| Fig.24: Layout for 6T transistor |
+
+| ![image](https://github.com/Shruti-Mahato/SRAM/blob/main/Images/Layout_precharge.png) |
+| :---: |
+| Fig.25: Layout for Precharge Circuit |
+
+
+| ![image](https://github.com/Shruti-Mahato/SRAM/blob/main/Images/Layout_row_enable.png) |
+| :---: |
+| Fig.26: Layout for Row enable Circuit |
+
+| ![image](https://github.com/Shruti-Mahato/SRAM/blob/main/Images/Layout_sense_amplifier.png) |
+| :---: |
+| Fig.26: Layout for Sense Amplifier |
+
+| ![image](https://github.com/Shruti-Mahato/SRAM/blob/main/Images/Layout_sram_6t_16x8.png) |
+| :---: |
+| Fig.26: Layout for 16x8 6T SRAM Cell |
+
+| ![image](https://github.com/Shruti-Mahato/SRAM/blob/main/Images/Layout_sram_top.png) |
+| :---: |
+| Fig.26: Layout for Top level SRAM Circuit | 
+
 
 ## Conclusion
 
