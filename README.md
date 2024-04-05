@@ -21,6 +21,7 @@ Design and Implementation of 16-Byte SRAM in 0.18μm CMOS Technology for low pow
 - [Operation of SRAM](#operation-of-sram)
 - [Static Noise Margin](#static-noise-margin)
 - [Top level Schematic and Testbench](#top-level-schematic-and-testbench)
+- [Layout](#layout)
 - [Conclusion](#conclusion)
 
 ## Introduction
